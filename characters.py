@@ -13,6 +13,7 @@ class MainCharacter(Character):
     def __init__(self, name: str, life: int, damage: int, shield: int, level: int, xp: float, user_class: str) -> None:
         
         super().__init__(name, life, level, damage)
+        self.shield = shield
         self.xp = xp
         self.user_class = user_class
 
