@@ -2,281 +2,341 @@
     "level1" : {
         "guerreiro" : {
             "vida" : 100,
-            "ataque" : 20
+            "ataque" : 20,
+            "shield" : 10
         },
         "mago" : {
             "vida" : 75,
-            "ataque" : 30
+            "ataque" : 30,
+            "shield" : 7
         },
         "arqueiro" : {
             "vida" : 85,
-            "ataque" : 25
+            "ataque" : 25,
+            "shield" : 6
         }
     },
     "level2" : {
         "guerreiro" : {
             "vida" : 105,
-            "ataque" : 21
+            "ataque" : 21,
+            "shield" : 11
         },
         "mago" : {
             "vida" : 79,
-            "ataque" : 32
+            "ataque" : 32,
+            "shield" : 7
         },
         "arqueiro" : {
             "vida" : 89,
-            "ataque" : 26
+            "ataque" : 26,
+            "shield" : 6
         }
     },
     "level3" : {
         "guerreiro" : {
             "vida" : 110,
-            "ataque" : 22
+            "ataque" : 22,
+            "shield" : 11
         },
         "mago" : {
             "vida" : 83,
-            "ataque" : 33
+            "ataque" : 33,
+            "shield" : 8
         },
         "arqueiro" : {
             "vida" : 94,
-            "ataque" : 28
+            "ataque" : 28,
+            "shield" : 7
         }
     },
     "level4" : {
         "guerreiro" : {
             "vida" : 116,
-            "ataque" : 23
+            "ataque" : 23,
+            "shield" : 12
         },
         "mago" : {
             "vida" : 87,
-            "ataque" : 35
+            "ataque" : 35,
+            "shield" : 8
         },
         "arqueiro" : {
             "vida" : 98,
-            "ataque" : 29
+            "ataque" : 29,
+            "shield" : 7
         }
     },
     "level5" : {
         "guerreiro" : {
             "vida" : 122,
-            "ataque" : 24
+            "ataque" : 24,
+            "shield" : 12
         },
         "mago" : {
             "vida" : 91,
-            "ataque" : 36
+            "ataque" : 36,
+            "shield" : 9
         },
         "arqueiro" : {
             "vida" : 103,
-            "ataque" : 30
+            "ataque" : 30,
+            "shield" : 7
         }
     },
     "level6" : {
         "guerreiro" : {
             "vida" : 128,
-            "ataque" : 26
+            "ataque" : 26,
+            "shield" : 13
         },
         "mago" : {
             "vida" : 96,
-            "ataque" : 38
+            "ataque" : 38,
+            "shield" : 9
         },
         "arqueiro" : {
             "vida" : 108,
-            "ataque" : 32
+            "ataque" : 32,
+            "shield" : 8
         }
     },
     "level7" : {
         "guerreiro" : {
             "vida" : 134,
-            "ataque" : 27
+            "ataque" : 27,
+            "shield" : 13
         },
         "mago" : {
             "vida" : 101,
-            "ataque" : 40
+            "ataque" : 40,
+            "shield" : 9
         },
         "arqueiro" : {
             "vida" : 114,
-            "ataque" : 34
+            "ataque" : 34,
+            "shield" : 8
         }
     },
     "level8" : {
         "guerreiro" : {
             "vida" : 141,
-            "ataque" : 28
+            "ataque" : 28,
+            "shield" : 14
         },
         "mago" : {
             "vida" : 106,
-            "ataque" : 42
+            "ataque" : 42,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 120,
-            "ataque" : 35
+            "ataque" : 35,
+            "shield" : 10
         }
     },
     "level9" : {
         "guerreiro" : {
             "vida" : 148,
-            "ataque" : 30
+            "ataque" : 30,
+            "shield" : 15
         },
         "mago" : {
             "vida" : 111,
-            "ataque" : 44
+            "ataque" : 44,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 126,
-            "ataque" : 37
+            "ataque" : 37,
+            "shield" : 10
         }
     },
     "level10" : {
         "guerreiro" : {
             "vida" : 155,
-            "ataque" : 31
+            "ataque" : 31,
+            "shield" : 16
         },
         "mago" : {
             "vida" : 116,
-            "ataque" : 47
+            "ataque" : 47,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 132,
-            "ataque" : 39
+            "ataque" : 39,
+            "shield" : 10
         }
     },
     "level11" : {
         "guerreiro" : {
             "vida" : 163,
-            "ataque" : 33
+            "ataque" : 33,
+            "shield" : 16
         },
         "mago" : {
             "vida" : 122,
-            "ataque" : 49
+            "ataque" : 49,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 138,
-            "ataque" : 41
+            "ataque" : 41,
+            "shield" : 10
         }
     },
     "level12" : {
         "guerreiro" : {
             "vida" : 171,
-            "ataque" : 34
+            "ataque" : 34,
+            "shield" : 17
         },
         "mago" : {
             "vida" : 128,
-            "ataque" : 51
+            "ataque" : 51,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 145,
-            "ataque" : 43
+            "ataque" : 43,
+            "shield" : 10
         }
     },
     "level13" : {
         "guerreiro" : {
             "vida" : 180,
-            "ataque" : 36
+            "ataque" : 36,
+            "shield" : 18
         },
         "mago" : {
             "vida" : 135,
-            "ataque" : 54
+            "ataque" : 54,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 153,
-            "ataque" : 45
+            "ataque" : 45,
+            "shield" : 10
         }
     },
     "level14" : {
         "guerreiro" : {
             "vida" : 189,
-            "ataque" : 38
+            "ataque" : 38,
+            "shield" : 10
         },
         "mago" : {
             "vida" : 141,
-            "ataque" : 57
+            "ataque" : 57,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 160,
-            "ataque" : 47
+            "ataque" : 47,
+            "shield" : 10
         }
     },
     "level15" : {
         "guerreiro" : {
             "vida" : 198,
-            "ataque" : 40
+            "ataque" : 40,
+            "shield" : 10
         },
         "mago" : {
             "vida" : 148,
-            "ataque" : 59
+            "ataque" : 59,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 168,
-            "ataque" : 49
+            "ataque" : 49,
+            "shield" : 10
         }
     },
     "level16" : {
         "guerreiro" : {
             "vida" : 208,
-            "ataque" : 42
+            "ataque" : 42,
+            "shield" : 10
         },
         "mago" : {
             "vida" : 156,
-            "ataque" : 62
+            "ataque" : 62,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 177,
-            "ataque" : 52
+            "ataque" : 52,
+            "shield" : 10
         }
     },
     "level17" : {
         "guerreiro" : {
             "vida" : 218,
-            "ataque" : 44
+            "ataque" : 44,
+            "shield" : 10
         },
         "mago" : {
             "vida" : 164,
-            "ataque" : 65
+            "ataque" : 65,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 186,
-            "ataque" : 55
+            "ataque" : 55,
+            "shield" : 10
         }
     },
     "level18" : {
         "guerreiro" : {
             "vida" : 229,
-            "ataque" : 46
+            "ataque" : 46,
+            "shield" : 10
         },
         "mago" : {
             "vida" : 172,
-            "ataque" : 69
+            "ataque" : 69,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 195,
-            "ataque" : 57
+            "ataque" : 57,
+            "shield" : 10
         }
     },
     "level19" : {
         "guerreiro" : {
             "vida" : 241,
-            "ataque" : 48
+            "ataque" : 48,
+            "shield" : 10
         },
         "mago" : {
             "vida" : 180,
-            "ataque" : 72
+            "ataque" : 72,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 205,
-            "ataque" : 60
+            "ataque" : 60,
+            "shield" : 10
         }
     },
     "level20" : {
         "guerreiro" : {
             "vida" : 253,
-            "ataque" : 51
+            "ataque" : 51,
+            "shield" : 10
         },
         "mago" : {
             "vida" : 190,
-            "ataque" : 76
+            "ataque" : 76,
+            "shield" : 10
         },
         "arqueiro" : {
             "vida" : 215,
-            "ataque" : 63
+            "ataque" : 63,
+            "shield" : 10
         }
     }
 }

@@ -1,3 +1,4 @@
+import getpass
 from utils import main_decorator
 import re
 
@@ -50,3 +51,49 @@ def get_email() -> str:
             valid = False
         
     return email
+
+def get_password() -> str:
+
+    valid = False
+    password = ''
+
+    main_decorator()
+
+    while not valid:
+        
+        valid = True
+        password = getpass.getpass(prompt='Digite sua Senha: ', stream=None)
+
+        if len(password) < 8: 
+            
+            valid = False
+            print('\nA senha deve conter pelo menos 8 caracteres...\n')
+            continue
+
+        if not re.search("[a-z]", password) or not re.search("[A-Z]", password) or not re.search("[0-9]", password) or not re.search("[_@$]", password) or re.search("\s", password): 
+            
+            valid = False
+            print('\nA senha deve conter pelo menos 1 letra minuscula, 1 maiuscula, um número e 1 caractere especial...\n')
+            continue
+
+    return password
+
+def get_username() -> str:
+
+    valid = False
+    username = ''
+
+    main_decorator()
+
+    while not valid:
+        
+        valid = True
+        username = input('Digite seu nome de usuário: ').strip()
+        
+        if len(username) > 14:
+            
+            valid = False
+            print('\nO nome de usuário deve conter entre 3-14 caracteres...\n')
+            continue
+        
+    return username
