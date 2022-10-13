@@ -18,3 +18,22 @@ def main_decorator():
 def clean():
 
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def coloring_text(text, color):
+
+    if color == 'red':
+
+        return(f'\033[1;31m{text}\033[m')
+
+    if color == 'green':
+
+        return(f'\033[1;32m{text}\033[m')
+
+    if color == 'blue':
+
+        return(f'\033[1;36m{text}\033[m')
+
+    if color == 'yellow':
+
+        return(f'\033[1;33m{text}\033[m')
