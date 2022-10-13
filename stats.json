@@ -340,6 +340,25 @@
             "escudo" : 15}}
     },
     "xp": {
-        
+        "level1" : 0,
+        "level2" : 100,
+        "level3" : 200,
+        "level4" : 300,
+        "level5" : 600,
+        "level6" : 800,
+        "level7" : 1000,
+        "level8" : 1350,
+        "level9" : 1700,
+        "level10" : 2500,
+        "level11" : 3000,
+        "level12" : 3600,
+        "level13" : 4200,
+        "level14" : 4900,
+        "level15" : 5500,
+        "level16" : 6200,
+        "level17" : 7000,
+        "level18" : 7800,
+        "level19" : 8700,
+        "level20" : 10000
     }
 }
