@@ -22,6 +22,10 @@ def clean():
 
 def coloring_text(text, color):
 
+    if color == 'white':
+
+        return(f'\033[1;38m{text}\033[m')
+
     if color == 'red':
 
         return(f'\033[1;31m{text}\033[m')
@@ -30,10 +34,16 @@ def coloring_text(text, color):
 
         return(f'\033[1;32m{text}\033[m')
 
-    if color == 'blue':
-
-        return(f'\033[1;36m{text}\033[m')
-
     if color == 'yellow':
 
         return(f'\033[1;33m{text}\033[m')
+
+    if color == 'purple':
+
+        return(f'\033[1;34m{text}\033[m')
+
+    if color == 'cian':
+
+        return(f'\033[1;36m{text}\033[m')
+
+
