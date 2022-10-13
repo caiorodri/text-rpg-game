@@ -1,8 +1,9 @@
-from asyncio import shield
+from abc import ABC, abstractmethod
+from utils import coloring_text
 import json
 
 
-class Character:
+class Character(ABC):
 
     def __init__(self, name: str, life: int, damage: int, shield: int, level: int, xp: float) -> None:
 
@@ -13,6 +14,10 @@ class Character:
         self.level = level
         self.xp = xp
 
+    @abstractmethod
+    def show_stats(self):
+
+        pass
 
 class MainCharacter(Character):
 
@@ -20,25 +25,79 @@ class MainCharacter(Character):
         
         super().__init__(name, life, damage, shield, level, xp)
         self.user_class = user_class
+        with open('stats.json', 'r') as file:
+            
+            stats = json.load(file)
+        
+        self.stats = stats
 
     def check_stats(self) -> None:
 
         user_level = f'level{self.level}'
 
+        self.life = self.stats["leveis"][user_level][self.user_class]['vida']
+        self.damage = self.stats["leveis"][user_level][self.user_class]['ataque']
+        self.shield = self.stats["leveis"][user_level][self.user_class]['escudo']
+
+    def check_level(self):
+
         with open('stats.json', 'r') as file:
 
             stats = json.load(file)
 
-            self.life = stats["leveis"][user_level][self.user_class]['vida']
-            self.damage = stats["leveis"][user_level][self.user_class]['ataque']
-            self.shield = stats["leveis"][user_level][self.user_class]['escudo']
+            for indice, _ in enumerate(stats["xp"]):
+                
+                if indice == 0:
 
-    def check_level(self):
+                    pass
 
-        pass
+                elif self.xp < stats["xp"][f"level{indice+1}"] and self.xp >= stats["xp"][f"level{indice}"]:
+
+                    self.level = indice
+
+    def show_stats(self):
+
+        self.check_level()
+        self.check_stats()
+
+        print(f'''
+\033[1;33m{self.name}\033[m
+
+Classe: {self.user_class.title()}
+Level: {self.level}
+xp: {self.xp}
+
+Vida: {self.life}
+Ataque: {self.damage}
+Escudo: {self.shield}
+''')
+
+    def level_up(self):
+
+        old_level = self.level
+        old_life = self.life
+        old_damage = self.damage
+        old_shield = self.shield
+
+        self.check_level()
+        self.check_stats()
+
+        if old_level != self.level:
+
+            print(f"""
+{coloring_text(self.name, 'blue')}
+
+Level Up
+
+{coloring_text('Vida', 'green')} {old_life} -> {self.life} 
+{coloring_text('Ataque', 'red')} {old_damage} -> {self.damage} 
+{coloring_text('Escudo', 'yellow')} {old_shield} -> {self.shield} 
+""")
 
 class Monster(Character):
 
     def __init__(self, name: str, life: int, shield: int, damage: int, level: int, xp: float) -> None:
         super().__init__(name, life, damage, shield, level, xp)
 
+    def show_stats(self):
+        pass
