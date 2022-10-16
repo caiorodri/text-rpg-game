@@ -61,15 +61,15 @@ class MainCharacter(Character):
         self.check_stats()
 
         print(f'''
-\033[1;33m{self.name}\033[m
-
-Classe: {self.user_class.title()}
-Level: {self.level}
-xp: {self.xp}
-
-Vida: {self.life}
-Ataque: {self.damage}
-Escudo: {self.shield}
+| \033[1;36m{self.name}\033[m
+|
+| Classe: {self.user_class.title()}
+| Level: {self.level}
+| Xp: {self.xp}
+|
+| Vida: {self.life}
+| Ataque: {self.damage}
+| Escudo: {self.shield}
 ''')
 
     def level_up(self):
@@ -100,4 +100,21 @@ class Monster(Character):
         super().__init__(name, life, damage, shield, level, xp)
 
     def show_stats(self):
-        pass
+        
+        print(f'''
+| \033[1;31m{self.name}\033[m
+|
+| Level: {self.level}
+|
+| Vida: {self.life}
+| Ataque: {self.damage}
+| Escudo: {self.shield}
+''')
+
+main_character = MainCharacter('User', 0, 0, 0, 0, 0, 'arqueiro')
+
+skeleton = Monster('Skeleton', 40, 7, 16, 1, 10)
+
+main_character.show_stats()
+print('---------------------')
+skeleton.show_stats()
