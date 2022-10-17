@@ -1,0 +1,55 @@
+{
+    "monstros" : {
+        "slime" : {
+            "level1" : {
+                "vida" : 20,
+                "ataque" : 2,
+                "escudo" : 0
+            },
+            "level2" : {
+                "vida" : 22,
+                "ataque" : 3,
+                "escudo" : 0
+            },
+            "level3" : {
+                "vida" : 25,
+                "ataque" : 5,
+                "escudo" : 1
+            }
+        },
+        "goblin" : {
+            "level1" : {
+                "vida" : 40,
+                "ataque" : 6,
+                "escudo" : 2
+            },
+            "level2" : {
+                "vida" : 45,
+                "ataque" : 7,
+                "escudo" : 3
+            },
+            "level3" : {
+                "vida" : 50,
+                "ataque" : 8,
+                "escudo" : 4
+            }
+        },
+        "esqueleto" : {
+            "level1" : {
+                "vida" : 35,
+                "ataque" : 8,
+                "escudo" : 3
+            },
+            "level2" : {
+                "vida" : 40,
+                "ataque" : 10,
+                "escudo" : 4
+            },
+            "level3" : {
+                "vida" : 45,
+                "ataque" : 12,
+                "escudo" : 5
+            }
+        }
+    }
+}
