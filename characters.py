@@ -19,18 +19,22 @@ class Character(ABC):
 
         pass
 
+    @abstractmethod
+    def check_stats(self):
+
+        pass
+
 class MainCharacter(Character):
 
     def __init__(self, name: str, life: int, damage: int, shield: int, level: int, xp: float, user_class: str) -> None:
         
         super().__init__(name, life, damage, shield, level, xp)
         self.user_class = user_class
+
         with open('stats.json', 'r') as file:
             
-            stats = json.load(file)
+            self.stats = json.load(file)
         
-        self.stats = stats
-
     def check_stats(self) -> None:
 
         user_level = f'level{self.level}'
@@ -96,10 +100,16 @@ Level Up
 
 class Monster(Character):
 
-    def __init__(self, name: str, life: int, shield: int, damage: int, level: int, xp: float) -> None:
+    def __init__(self, name: str, level: int, life: int = 0, damage: int = 0, shield: int = 0, xp: float = 0) -> None:
         super().__init__(name, life, damage, shield, level, xp)
 
+        with open('monsters.json', 'r') as file:
+
+            self.stats = json.load(file)
+
     def show_stats(self):
+
+        self.check_stats()
         
         print(f'''
 | \033[1;31m{self.name}\033[m
@@ -111,9 +121,18 @@ class Monster(Character):
 | Escudo: {self.shield}
 ''')
 
+    def check_stats(self):
+
+        monster_level = f'level{self.level}'
+
+        self.life = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['vida']
+        self.damage = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['ataque']
+        self.shield = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['escudo']
+        
+
 main_character = MainCharacter('User', 0, 0, 0, 0, 0, 'arqueiro')
 
-skeleton = Monster('Skeleton', 40, 7, 16, 1, 10)
+skeleton = Monster('Esqueleto', 1)
 
 main_character.show_stats()
 print('---------------------')
