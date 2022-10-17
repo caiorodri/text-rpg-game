@@ -50,6 +50,23 @@
                 "ataque" : 12,
                 "escudo" : 5
             }
+        },
+        "Orc" : {
+            "level1" : {
+                "vida" : 70,
+                "ataque" : 15,
+                "escudo" : 12
+            },
+            "level2" : {
+                "vida" : 80,
+                "ataque" : 18,
+                "escudo" : 15
+            },
+            "level3" : {
+                "vida" : 90,
+                "ataque" : 21,
+                "escudo" : 17
+            }
         }
     }
 }
