@@ -1,5 +1,5 @@
 import getpass
-from utils import main_decorator
+from utils import clean, main_decorator
 import re
 
 
@@ -79,7 +79,7 @@ def get_password() -> str:
     return password
 
 def get_username() -> str:
-
+    
     valid = False
     username = ''
 
@@ -97,3 +97,43 @@ def get_username() -> str:
             continue
         
     return username
+
+def get_class() -> str:
+
+    valid = False
+    user_class = ''
+
+    main_decorator()
+
+    print('''Escolha uma classe para iniciar
+
+[1] Guerreiro
+[2] Arqueiro
+[3] Mago
+''')
+
+    while not valid:
+
+        user_class = input('Escolha do Usuário: ').strip().lower()
+
+        if user_class == 'guerreiro' or user_class == '1':
+
+            user_class = 'guerreiro'
+            valid = True
+
+        elif user_class == 'arqueiro' or user_class == '2':
+            
+            user_class = 'arqueiro'
+            valid = True
+    
+        elif user_class == 'mago' or user_class == '3':
+
+            user_class = 'mago'
+            valid = True
+
+        else: print('\nEscolha inválida!\n')
+    
+    return user_class
+
+
+get_password()
