@@ -11,7 +11,7 @@ def main_decorator():
 
     clean()
     print('=' * (len("My First Text RPG") + 2))
-    print(f" My First Text RPG")
+    print(f" \033[1;36mMy First Text RPG\033[m")
     print('=' * (len("My First Text RPG") + 2))
     print()
 
