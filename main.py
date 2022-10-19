@@ -1,5 +1,5 @@
 import getpass
-from utils import clean, main_decorator
+from utils import main_decorator
 import re
 
 
@@ -135,5 +135,3 @@ def get_class() -> str:
     
     return user_class
 
-
-get_password()
