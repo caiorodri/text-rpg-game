@@ -26,7 +26,7 @@ class Character(ABC):
 
 class MainCharacter(Character):
 
-    def __init__(self, name: str, life: int, damage: int, shield: int, level: int, xp: float, user_class: str) -> None:
+    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 0, xp: float = 0) -> None:
         
         super().__init__(name, life, damage, shield, level, xp)
         self.user_class = user_class
@@ -130,7 +130,7 @@ class Monster(Character):
         self.shield = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['escudo']
         
 
-main_character = MainCharacter('User', 0, 0, 0, 0, 0, 'arqueiro')
+main_character = MainCharacter('User', 'arqueiro')
 
 skeleton = Monster('Esqueleto', 1)
 
