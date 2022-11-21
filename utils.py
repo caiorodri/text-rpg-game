@@ -1,11 +1,43 @@
 import os
 
-def text_decorator(text: str, decorator: str) -> None:
+def text_decorator(text: str, color: str = 'white', decorator: str = '=',) -> None:
 
-    print(decorator * (len(text) + 2))
-    print(f' {text}')
-    print(decorator * (len(text) + 2))
+    if color == 'white':
+        print(decorator * (len(text) + 2))
+        print(f' {text}')
+        print(decorator * (len(text) + 2))
+    
+    elif color == 'red':
+        print(decorator * (len(text) + 2))
+        print(f' \033[1;31m{text}\033[m')
+        print(decorator * (len(text) + 2))
+    
+    elif color == 'green':
+        print(decorator * (len(text) + 2))
+        print(f' \033[1;32m{text}\033[m')
+        print(decorator * (len(text) + 2))
+    
+    elif color == 'yellow':
+        print(decorator * (len(text) + 2))
+        print(f' \033[1;33m{text}\033[m')
+        print(decorator * (len(text) + 2))
 
+    elif color == 'purple':
+        print(decorator * (len(text) + 2))
+        print(f' \033[1;34m{text}\033[m')
+        print(decorator * (len(text) + 2))
+
+    elif color == 'pink':
+        print(decorator * (len(text) + 2))
+        print(f' \033[1;35m{text}\033[m')
+        print(decorator * (len(text) + 2))
+
+    elif color == 'cian':
+        print(decorator * (len(text) + 2))
+        print(f' \033[1;36m{text}\033[m')
+        print(decorator * (len(text) + 2))
+    
+    print()
 
 def main_decorator():
 
