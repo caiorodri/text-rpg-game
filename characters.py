@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from utils import coloring_text
+import os
+from utils import coloring_text, text_decorator
 import json
 
 
@@ -64,9 +65,9 @@ class MainCharacter(Character):
         self.check_level()
         self.check_stats()
 
-        print(f'''
-| \033[1;36m{self.name}\033[m
-|
+        text_decorator(f'{self.name}', 'cian')
+
+        print(f'''|
 | Classe: {self.user_class.title()}
 | Level: {self.level}
 | Xp: {self.xp}
@@ -107,13 +108,15 @@ class Monster(Character):
 
             self.stats = json.load(file)
 
-    def show_stats(self):
+    def show_stats(self, clean: bool = False):
+
+        if clean: os.system('cls')
 
         self.check_stats()
         
-        print(f'''
-| \033[1;31m{self.name}\033[m
-|
+        text_decorator(self.name, 'red')
+
+        print(f'''|
 | Level: {self.level}
 |
 | Vida: {self.life}
@@ -129,11 +132,3 @@ class Monster(Character):
         self.damage = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['ataque']
         self.shield = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['escudo']
         
-
-main_character = MainCharacter('User', 'arqueiro')
-
-skeleton = Monster('Esqueleto', 1)
-
-main_character.show_stats()
-print('---------------------')
-skeleton.show_stats()
