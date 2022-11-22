@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import os
-from utils import coloring_text, text_decorator
+from utils import clean, coloring_text, text_decorator
 import json
 
 
@@ -16,7 +16,7 @@ class Character(ABC):
         self.xp = xp
 
     @abstractmethod
-    def show_stats(self):
+    def show_stats(self, clean):
 
         pass
 
@@ -27,7 +27,7 @@ class Character(ABC):
 
 class MainCharacter(Character):
 
-    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 0, xp: float = 0) -> None:
+    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 0, xp: float = 0, stage: int = 0) -> None:
         
         super().__init__(name, life, damage, shield, level, xp)
         self.user_class = user_class
@@ -60,15 +60,16 @@ class MainCharacter(Character):
 
                     self.level = indice
 
-    def show_stats(self):
+    def show_stats(self, clean_screen: bool = False):
+
+        if clean_screen: clean()
 
         self.check_level()
         self.check_stats()
 
         text_decorator(f'{self.name}', 'cian')
 
-        print(f'''|
-| Classe: {self.user_class.title()}
+        print(f'''| Classe: {self.user_class.title()}
 | Level: {self.level}
 | Xp: {self.xp}
 |
@@ -108,16 +109,15 @@ class Monster(Character):
 
             self.stats = json.load(file)
 
-    def show_stats(self, clean: bool = False):
+    def show_stats(self, clean_screen: bool = False):
 
-        if clean: os.system('cls')
+        if clean_screen: clean()
 
         self.check_stats()
         
         text_decorator(self.name, 'red')
 
-        print(f'''|
-| Level: {self.level}
+        print(f'''| Level: {self.level}
 |
 | Vida: {self.life}
 | Ataque: {self.damage}
