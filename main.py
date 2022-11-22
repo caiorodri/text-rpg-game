@@ -1,6 +1,7 @@
 import getpass
 from utils import main_decorator
 import re
+from characters import MainCharacter
 
 
 def get_name() -> str:
@@ -35,6 +36,8 @@ def get_email() -> str:
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,}$'
 
     while not valid:
+
+        main_decorator()
 
         valid = True
         
@@ -135,3 +138,12 @@ def get_class() -> str:
     
     return user_class
 
+name = get_name()
+email = get_email()
+password = get_password()
+username = get_username()
+user_class = get_class()
+
+user = MainCharacter(username, user_class, 0, 0, 0, 0, 0)
+
+user.show_stats(clean_screen=True)
