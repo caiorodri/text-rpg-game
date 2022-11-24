@@ -1,4 +1,5 @@
 import os
+from time import sleep
 
 def text_decorator(text: str, color: str = 'white', decorator: str = '=',) -> None:
 
@@ -81,4 +82,10 @@ def coloring_text(text, color):
 
         return(f'\033[1;36m{text}\033[m')
 
+def animated_text(text: str, time: float = 0.05):
+
+    for letter in text:
+
+        print(letter, end='')
+        sleep(time)
 
