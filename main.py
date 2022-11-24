@@ -1,4 +1,5 @@
 import getpass
+from dungeons import dungeon1
 from utils import main_decorator
 import re
 from characters import MainCharacter
@@ -138,12 +139,12 @@ def get_class() -> str:
     
     return user_class
 
-name = get_name()
-email = get_email()
-password = get_password()
+# name = get_name()
+# email = get_email()
+# password = get_password()
 username = get_username()
 user_class = get_class()
 
-user = MainCharacter(username, user_class, 0, 0, 0, 0, 0)
+user = MainCharacter(username, user_class)
 
-user.show_stats(clean_screen=True)
+dungeon1(user)
