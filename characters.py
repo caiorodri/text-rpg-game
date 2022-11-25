@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-import os
 from utils import clean, coloring_text, text_decorator
 import json
 
@@ -38,6 +37,8 @@ class MainCharacter(Character):
         
     def check_stats(self) -> None:
 
+        self.check_level()
+
         user_level = f'level{self.level}'
 
         self.life = self.stats["leveis"][user_level][self.user_class]['vida']
@@ -64,7 +65,6 @@ class MainCharacter(Character):
 
         if clean_screen: clean()
 
-        self.check_level()
         self.check_stats()
 
         text_decorator(f'{self.name}', 'cian')
