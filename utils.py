@@ -52,11 +52,7 @@ def clean():
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def coloring_text(text, color):
-
-    if color == 'white':
-
-        return(f'\033[1;38m{text}\033[m')
+def coloring_text(text: str, color: str) -> str:        
 
     if color == 'red':
 
@@ -82,7 +78,12 @@ def coloring_text(text, color):
 
         return(f'\033[1;36m{text}\033[m')
 
-def animated_text(text: str, time: float = 0.05):
+    else:
+
+        return(f'\033[1;38m{text}\033[m')
+
+
+def animated_text(text: str, time: float = 0.04):
 
     for letter in text:
 
