@@ -139,12 +139,18 @@ def get_class() -> str:
     
     return user_class
 
-# name = get_name()
-# email = get_email()
-# password = get_password()
-username = get_username()
-user_class = get_class()
+def get_data():
 
-user = MainCharacter(username, user_class)
+    # name = get_name()
+    # email = get_email()
+    # password = get_password()
+    username = get_username()
+    user_class = get_class()
+
+    user = MainCharacter(username, user_class)
+
+    return user
+
+user = get_data()
 
 dungeon1(user)
