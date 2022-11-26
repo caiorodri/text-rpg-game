@@ -15,7 +15,7 @@ def dungeon1(player):
 
     dungeon_decorator('Dungeon 1')
 
-    animated_text(f'Voz Desconhecida: Olá {player.name}, sou Isabely e serei sua guia nesta jornada.\nQuando você finaliza-la poderei te explicar sobre como usar as habilidades que\nvocê irá despertar no caminho... se você conseguir finalizar a dungeon, é claro.\nDesejo-lhe boa sorte em sua primeira dungeon.')
+    animated_text(f'Voz Desconhecida: Olá {player.name}, sou Isabely e serei sua guia nesta jornada.\nQuando você finaliza-la poderei te explicar sobre como usar as habilidades que\nvocê irá despertar no caminho. Se você conseguir finalizar a dungeon, é claro.\nDesejo-lhe boa sorte em sua primeira dungeon.')
 
     input('\n\nPressione enter para continuar...')
 
@@ -27,4 +27,11 @@ def dungeon1(player):
     
     d1_floor1(player)
     
+    dungeon_decorator('Dungeon 1')
+
+    animated_text(f'Parabéns! você limpou com sucesso o primeiro andar da Dungeon 1')
+
+    print()
+
+    animated_text(input('Pressione enter para prosseguir...'))
 
