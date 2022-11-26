@@ -83,7 +83,7 @@ def coloring_text(text: str, color: str) -> str:
         return(f'\033[1;38m{text}\033[m')
 
 
-def animated_text(text: str, time: float = 0.04):
+def animated_text(text: str, time: float = 0.05):
 
     for letter in text:
 
