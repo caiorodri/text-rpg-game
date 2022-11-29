@@ -132,24 +132,29 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> str:
 
     return battle_result
 
-
-def get_monsters(name: str, min_level: int = 1, max_level: int = 3, min_quantity_monster: int = 1, max_quantity_monster: int = 3) -> list:
-
-    quantity_monsters = randint(min_quantity_monster, max_quantity_monster)
+def get_monsters(name: str, min_level: int = 1, max_level: int = 3, min_quantity_monster: int = 1, max_quantity_monster: int = 3, boss: str = 'nothing') -> list:
 
     monsters = []
 
-    for indice in range(1, quantity_monsters+1):
+    if boss == 'nothing':
 
-        level_monster = randint(min_level, max_level)
+        quantity_monsters = randint(min_quantity_monster, max_quantity_monster)
 
-        monsters.append(Monster(name, level_monster))
+        for indice in range(1, quantity_monsters+1):
 
-    for monster in monsters:
+            level_monster = randint(min_level, max_level)
 
-        monster.check_stats()
+            monsters.append(Monster(name, level_monster))
 
-    return monsters
+        for monster in monsters:
+
+            monster.check_stats()
+
+        return monsters
+
+    else:
+
+        monsters.append
 
 def floor_decorator(floor):
 
@@ -159,13 +164,105 @@ def floor_decorator(floor):
 
 # DUNGEON 1
 
-def d1_floor1(player: MainCharacter):
+def floor1(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
 
-    monsters = get_monsters('slime')
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
     floor_decorator('Andar 1')
 
     battle_result = fight(player, monsters, 'Andar 1')
+
+    return battle_result
+
+def floor2(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    floor_decorator('Andar 2')
+
+    battle_result = fight(player, monsters, 'Andar 2')
+
+    return battle_result
+
+def floor3(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    floor_decorator('Andar 3')
+
+    battle_result = fight(player, monsters, 'Andar 3')
+
+    return battle_result
+
+def floor4(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    floor_decorator('Andar 4')
+
+    battle_result = fight(player, monsters, 'Andar 4')
+
+    return battle_result
+
+def floor5(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    floor_decorator('Andar 5')
+
+    battle_result = fight(player, monsters, 'Andar 5')
+
+    return battle_result
+
+def floor6(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    floor_decorator('Andar 6')
+
+    battle_result = fight(player, monsters, 'Andar 6')
+
+    return battle_result
+
+def floor7(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    floor_decorator('Andar 7')
+
+    battle_result = fight(player, monsters, 'Andar 7')
+
+    return battle_result
+
+def floor8(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    floor_decorator('Andar 8')
+
+    battle_result = fight(player, monsters, 'Andar 8')
+
+    return battle_result
+
+def floor9(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    floor_decorator('Andar 9')
+
+    battle_result = fight(player, monsters, 'Andar 9')
+
+    return battle_result
+
+def floor10(player: MainCharacter, monster: str, boss: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+    boss = get_monsters('slime', )
+
+    floor_decorator('Andar 10')
+
+    battle_result = fight(player, monsters, 'Andar 10')
 
     return battle_result
 
