@@ -4,68 +4,80 @@
             "level1" : {
                 "vida" : 20,
                 "ataque" : 2,
-                "escudo" : 0
+                "escudo" : 0,
+                "xp" : 10
             },
             "level2" : {
                 "vida" : 22,
                 "ataque" : 3,
-                "escudo" : 0
+                "escudo" : 0,
+                "xp" : 15
             },
             "level3" : {
                 "vida" : 25,
                 "ataque" : 5,
-                "escudo" : 1
+                "escudo" : 1,
+                "xp" : 20
             }
         },
         "goblin" : {
             "level1" : {
                 "vida" : 40,
                 "ataque" : 6,
-                "escudo" : 2
+                "escudo" : 2,
+                "xp" : 16
             },
             "level2" : {
                 "vida" : 45,
                 "ataque" : 7,
-                "escudo" : 3
+                "escudo" : 3,
+                "xp" : 21
             },
             "level3" : {
                 "vida" : 50,
                 "ataque" : 8,
-                "escudo" : 4
+                "escudo" : 4,
+                "xp" : 26
             }
         },
         "esqueleto" : {
             "level1" : {
                 "vida" : 35,
                 "ataque" : 8,
-                "escudo" : 3
+                "escudo" : 3,
+                "xp" : 20
             },
             "level2" : {
                 "vida" : 40,
                 "ataque" : 10,
-                "escudo" : 4
+                "escudo" : 4,
+                "xp" : 26
             },
             "level3" : {
                 "vida" : 45,
                 "ataque" : 12,
-                "escudo" : 5
+                "escudo" : 5,
+                "xp" : 32
             }
         },
         "Orc" : {
             "level1" : {
                 "vida" : 70,
                 "ataque" : 15,
-                "escudo" : 12
+                "escudo" : 12,
+                "xp" : 28
             },
             "level2" : {
                 "vida" : 80,
                 "ataque" : 18,
-                "escudo" : 15
+                "escudo" : 15,
+                "xp" : 33
             },
             "level3" : {
                 "vida" : 90,
                 "ataque" : 21,
-                "escudo" : 17
+                "escudo" : 17,
+                "xp" : 40
             }
         }
     }
