@@ -3,81 +3,129 @@
         "slime" : {
             "level1" : {
                 "vida" : 20,
-                "ataque" : 2,
-                "escudo" : 0,
+                "ataque" : 15,
+                "escudo" : 1,
                 "xp" : 10
             },
             "level2" : {
-                "vida" : 22,
-                "ataque" : 3,
-                "escudo" : 0,
+                "vida" : 27,
+                "ataque" : 20,
+                "escudo" : 2,
                 "xp" : 15
             },
             "level3" : {
-                "vida" : 25,
-                "ataque" : 5,
-                "escudo" : 1,
+                "vida" : 34,
+                "ataque" : 25,
+                "escudo" : 3,
                 "xp" : 20
+            },
+            "level4" : {
+                "vida" : 42,
+                "ataque" : 30,
+                "escudo" : 5,
+                "xp" : 30
+            },
+            "level5" : {
+                "vida" : 50,
+                "ataque" : 35,
+                "escudo" : 7,
+                "xp" : 35
             }
         },
         "goblin" : {
             "level1" : {
                 "vida" : 40,
-                "ataque" : 6,
+                "ataque" : 14,
                 "escudo" : 2,
                 "xp" : 16
             },
             "level2" : {
                 "vida" : 45,
-                "ataque" : 7,
+                "ataque" : 20,
                 "escudo" : 3,
-                "xp" : 21
+                "xp" : 22
             },
             "level3" : {
                 "vida" : 50,
-                "ataque" : 8,
+                "ataque" : 26,
                 "escudo" : 4,
-                "xp" : 26
+                "xp" : 28
+            },
+            "level4" : {
+                "vida" : 55,
+                "ataque" : 32,
+                "escudo" : 7,
+                "xp" : 34
+            },
+            "level5" : {
+                "vida" : 65,
+                "ataque" : 40,
+                "escudo" : 4,
+                "xp" : 42
             }
         },
         "esqueleto" : {
             "level1" : {
                 "vida" : 35,
-                "ataque" : 8,
+                "ataque" : 20,
                 "escudo" : 3,
                 "xp" : 20
             },
             "level2" : {
                 "vida" : 40,
-                "ataque" : 10,
+                "ataque" : 27,
                 "escudo" : 4,
-                "xp" : 26
+                "xp" : 28
             },
             "level3" : {
                 "vida" : 45,
-                "ataque" : 12,
+                "ataque" : 34,
                 "escudo" : 5,
-                "xp" : 32
+                "xp" : 36
+            },
+            "level4" : {
+                "vida" : 50,
+                "ataque" : 41,
+                "escudo" : 7,
+                "xp" : 44
+            },
+            "level5" : {
+                "vida" : 55,
+                "ataque" : 48,
+                "escudo" : 10,
+                "xp" : 52
             }
         },
         "Orc" : {
             "level1" : {
                 "vida" : 70,
-                "ataque" : 15,
+                "ataque" : 20,
                 "escudo" : 12,
-                "xp" : 28
+                "xp" : 35
             },
             "level2" : {
                 "vida" : 80,
-                "ataque" : 18,
+                "ataque" : 25,
                 "escudo" : 15,
-                "xp" : 33
+                "xp" : 42
             },
             "level3" : {
                 "vida" : 90,
-                "ataque" : 21,
-                "escudo" : 17,
-                "xp" : 40
+                "ataque" : 30,
+                "escudo" : 18,
+                "xp" : 49
+            },
+            "level4" : {
+                "vida" : 100,
+                "ataque" : 35,
+                "escudo" : 21,
+                "xp" : 56
+            },
+            "level5" : {
+                "vida" : 110,
+                "ataque" : 40,
+                "escudo" : 24,
+                "xp" : 63
             }
         }
     }
