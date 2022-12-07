@@ -1,7 +1,9 @@
 import os
 from time import sleep
 
-def text_decorator(text: str, color: str = 'white', decorator: str = '=',) -> None:
+def text_decorator(text: str, color: str = 'white', decorator: str = '=') -> None:
+
+    clean()
 
     if color == 'white':
         print(decorator * (len(text) + 2))
@@ -52,7 +54,7 @@ def clean():
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def coloring_text(text: str, color: str) -> str:        
+def coloring_text(text: str, color: str) -> str:
 
     if color == 'red':
 
@@ -82,11 +84,9 @@ def coloring_text(text: str, color: str) -> str:
 
         return(f'\033[1;38m{text}\033[m')
 
-
 def animated_text(text: str, time: float = 0.05):
 
     for letter in text:
 
         print(letter, end='')
         sleep(time)
-
