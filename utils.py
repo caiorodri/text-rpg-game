@@ -90,3 +90,11 @@ def animated_text(text: str, time: float = 0.05):
 
         print(letter, end='')
         sleep(time)
+
+def xp_screen(xp_before: int, xp_after: int) -> None:
+
+    text_decorator('XP Ganho na Batalha', 'cian')
+
+    animated_text(f'\033[1;36m{xp_before}\033[m + \033[1;36m{xp_after - xp_before}\033[m -> \033[1;36m{xp_after}\033[m XP')
+
+    animated_text(input("\n\n\033[1;33mPressione enter para continuar...\033[m"))
