@@ -2,80 +2,92 @@ from time import sleep
 from typing import List
 from characters import Monster, MainCharacter
 from random import randint
-from utils import animated_text, clean, text_decorator
+from utils import animated_text, clean, text_decorator, xp_screen
 
 
 def fight_screen(player: MainCharacter, monsters: List[Monster], floor: str) -> None:
 
     floor_decorator(floor)
 
-    print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK)')
+    print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK) (\033[1;33m{player.shield}\033[m DEF)')
 
     print()
 
     for index, monster in enumerate(monsters):
 
-        monster.check_stats()
+        print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)')
 
-        print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK)')
-
-def damage_screen(player: MainCharacter, monsters: List[Monster], player_target: int, floor: str) -> list:
+def damage_screen(player: MainCharacter, monsters: List[Monster], player_target: int, floor: str):
 
     floor_decorator(floor)
 
     monsters_damage = 0
 
-    print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK)')
+    print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK) (\033[1;33m{player.shield}\033[m DEF)')
+
+    print()
 
     for index, monster in enumerate(monsters):
 
-        if monster.life > 0:
+        if monster.life > 0: 
 
             if index == player_target:
 
                 # ATAQUE DO USUÁRIO
 
-                print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) - [\033[1;31m{monster.life}\033[m HP - \033[1;36m{player.damage}\033[m ->', end='')
-                
-                if (monster.life - player.damage) <= 0:
+                print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)', end=' ')
 
-                    print(' \033[1;31m0\033[m HP] ( \033[1;31mDIED\033[m ) ')
+                if player.damage - monster.shield <= 0:                 
+                    
+                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m0\033[m ->', 0.075)
+                    
+                else:
+
+                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m{player.damage - monster.shield}\033[m ->', 0.075)
+
+                if (monster.life - (player.damage - monster.shield)) <= 0:
+
+                    animated_text(' \033[1;31m0\033[m HP] ( \033[1;31mDIED\033[m )\n', 0.075)
 
                 else:
 
-                    print(f' \033[1;31m{monster.life - player.damage}\033[m HP]')
+                    animated_text(f' \033[1;31m{monster.life - (player.damage - monster.shield)}\033[m HP]\n', 0.075)
 
-                monster.life -= player.damage
-
+                if (player.damage - monster.shield) > 0:
+    
+                    monster.life -= (player.damage - monster.shield)
+                
             else:
 
-                print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK)')
+                print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)')
 
             if monster.life > 0:
 
                 monsters_damage += monster.damage
 
-    print()
-
-    animated_text(input('\nPressione enter para continuar...'))
+    animated_text(input('\n\033[1;33mPressione enter para continuar...\033[m'))
 
     floor_decorator(floor)
 
     # ATAQUE DOS MONSTROS
 
-    print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK)', end=' ')
+    print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK) (\033[1;33m{player.shield}\033[m DEF)', end=' ')
 
-    animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage}\033[m -> \033[1;32m{player.life - monsters_damage}\033[m HP]')
+    if monsters_damage - player.shield <= 0:
+            
+        animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m0\033[m -> \033[1;32m{player.life}\033[m HP]')
 
-    player.life -= monsters_damage
+    else:
+
+        animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage - player.shield}\033[m -> \033[1;32m{player.life - (monsters_damage - player.shield)}\033[m HP]')
+
+        player.life -= (monsters_damage - player.shield)
 
     print()
 
-    animated_text(input('\nPressione enter para continuar...'))
+    animated_text(input('\n\033[1;33mPressione enter para continuar...\033[m'))
 
-    return [player.life, monsters]
-
-def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> str:
+def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
 
     player.check_stats()
 
@@ -97,7 +109,7 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> str:
                 
                 user_target = int(input('Escolha um inimigo para atacar: ').strip())-1
 
-                if user_target >= 0 and user_target <= len(monsters):
+                if user_target >= 0 and user_target < len(monsters):
                     
                     valid = True
 
@@ -111,7 +123,7 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> str:
         
         # ATAQUES
 
-        player.life, monsters = damage_screen(player, monsters, user_target, floor)
+        damage_screen(player, monsters, user_target, floor)
 
         # CHECAGEM DOS MONSTROS VIVOS
 
@@ -119,16 +131,17 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> str:
 
             if monster.life <= 0:
                     
+                player.xp += monster.xp
+
                 monsters.pop(index)
 
         if len(monsters) == 0:
 
-            battle_result = 'win'
+            battle_result = True
 
         if player.life <= 0:
 
-            battle_result = 'lose'
-
+            battle_result = False
 
     return battle_result
 
@@ -136,25 +149,23 @@ def get_monsters(name: str, min_level: int = 1, max_level: int = 3, min_quantity
 
     monsters = []
 
-    if boss == 'nothing':
+    if boss != 'nothing':
 
-        quantity_monsters = randint(min_quantity_monster, max_quantity_monster)
+        monsters.append(Monster(boss, 3))
 
-        for indice in range(1, quantity_monsters+1):
+    quantity_monsters = randint(min_quantity_monster, max_quantity_monster)
 
-            level_monster = randint(min_level, max_level)
+    for indice in range(1, quantity_monsters+1):
 
-            monsters.append(Monster(name, level_monster))
+        level_monster = randint(min_level, max_level)
 
-        for monster in monsters:
+        monsters.append(Monster(name, level_monster))
 
-            monster.check_stats()
+    for monster in monsters:
 
-        return monsters
+        monster.check_stats()
 
-    else:
-
-        monsters.append
+    return monsters
 
 def floor_decorator(floor):
 
@@ -164,107 +175,245 @@ def floor_decorator(floor):
 
 # DUNGEON 1
 
-def floor1(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+def floor1(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
 
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+    battle_result = True
 
-    floor_decorator('Andar 1')
+    for indice in range(2):
 
-    battle_result = fight(player, monsters, 'Andar 1')
+        if battle_result:
 
-    return battle_result
+            xp_before_battle = player.xp
 
-def floor2(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+            floor_decorator('Andar 1')
 
-    floor_decorator('Andar 2')
+            battle_result = fight(player, monsters, 'Andar 1')
 
-    battle_result = fight(player, monsters, 'Andar 2')
+            xp_after_battle = player.xp
 
-    return battle_result
-
-def floor3(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
-
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
-
-    floor_decorator('Andar 3')
-
-    battle_result = fight(player, monsters, 'Andar 3')
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+ 
+    if battle_result: player.floor += 1
 
     return battle_result
 
-def floor4(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+def floor2(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+    battle_result = True
 
-    floor_decorator('Andar 4')
+    for indice in range(2):
 
-    battle_result = fight(player, monsters, 'Andar 4')
+        if battle_result:
 
-    return battle_result
+            xp_before_battle = player.xp
 
-def floor5(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+            floor_decorator('Andar 2')
+            
+            battle_result = fight(player, monsters, 'Andar 2')
 
-    floor_decorator('Andar 5')
+            xp_after_battle = player.xp
 
-    battle_result = fight(player, monsters, 'Andar 5')
-
-    return battle_result
-
-def floor6(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
-
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
-
-    floor_decorator('Andar 6')
-
-    battle_result = fight(player, monsters, 'Andar 6')
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+ 
+    if battle_result: player.floor += 1
 
     return battle_result
 
-def floor7(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+def floor3(player: MainCharacter, monster: str, level_min_monster: int = 2, level_max_monster: int = 4 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+    battle_result = True
 
-    floor_decorator('Andar 7')
+    for indice in range(2):
 
-    battle_result = fight(player, monsters, 'Andar 7')
+        if battle_result:
 
-    return battle_result
+            xp_before_battle = player.xp
 
-def floor8(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+            floor_decorator('Andar 3')
 
-    floor_decorator('Andar 8')
+            battle_result = fight(player, monsters, 'Andar 3')
 
-    battle_result = fight(player, monsters, 'Andar 8')
-
-    return battle_result
-
-def floor9(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
-
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
-
-    floor_decorator('Andar 9')
-
-    battle_result = fight(player, monsters, 'Andar 9')
+            xp_after_battle = player.xp
+            
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+  
+    if battle_result: player.floor += 1
 
     return battle_result
 
-def floor10(player: MainCharacter, monster: str, boss: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3):
+def floor4(player: MainCharacter, monster: str, level_min_monster: int = 3, level_max_monster: int = 5 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
-    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+    battle_result = True
 
-    boss = get_monsters('slime', )
+    for indice in range(2):
+
+        if battle_result:
+
+            xp_before_battle = player.xp
+
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+            floor_decorator('Andar 4')
+
+            battle_result = fight(player, monsters, 'Andar 4')
+
+            xp_after_battle = player.xp
+            
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+    
+    if battle_result: player.floor += 1
+
+    return battle_result
+
+def floor5(player: MainCharacter, monster: str, level_min_monster: int = 4, level_max_monster: int = 6 , min_quantity_monsters: int = 3, max_quantity_monsters: int = 5) -> bool:
+
+    battle_result = True
+
+    for indice in range(2):
+
+        if battle_result:
+
+            xp_before_battle = player.xp
+
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+            floor_decorator('Andar 5')
+
+            battle_result = fight(player, monsters, 'Andar 5')
+
+            xp_after_battle = player.xp
+            
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+  
+    if battle_result: player.floor += 1
+
+    return battle_result
+
+def floor6(player: MainCharacter, monster: str, level_min_monster: int = 5, level_max_monster: int = 7 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+
+    battle_result = True
+
+    for indice in range(2):
+
+        if battle_result:
+
+            xp_before_battle = player.xp
+
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+            floor_decorator('Andar 6')
+
+            battle_result = fight(player, monsters, 'Andar 6')
+
+            xp_after_battle = player.xp
+            
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+  
+    if battle_result: player.floor += 1
+
+    return battle_result
+
+def floor7(player: MainCharacter, monster: str, level_min_monster: int = 6, level_max_monster: int = 8 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+
+    battle_result = True
+
+    for indice in range(2):
+
+        if battle_result:
+
+            xp_before_battle = player.xp
+
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+            floor_decorator('Andar 7')
+
+            battle_result = fight(player, monsters, 'Andar 7')
+
+            xp_after_battle = player.xp
+            
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+  
+    if battle_result: player.floor += 1
+
+    return battle_result
+
+def floor8(player: MainCharacter, monster: str, level_min_monster: int = 7, level_max_monster: int = 9 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+
+    battle_result = True
+
+    for indice in range(2):
+
+        if battle_result:
+
+            xp_before_battle = player.xp
+
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+            floor_decorator('Andar 8')
+
+            battle_result = fight(player, monsters, 'Andar 8')
+
+            xp_after_battle = player.xp
+            
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+  
+    if battle_result: player.floor += 1
+
+    return battle_result
+
+def floor9(player: MainCharacter, monster: str, level_min_monster: int = 8, level_max_monster: int = 10 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+
+    battle_result = True
+
+    for indice in range(2):
+
+        if battle_result:
+
+            xp_before_battle = player.xp
+
+            monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
+
+            floor_decorator('Andar 9')
+
+            battle_result = fight(player, monsters, 'Andar 9')
+
+            xp_after_battle = player.xp
+            
+            xp_screen(xp_before_battle, xp_after_battle)
+            player.level_up()
+  
+    if battle_result: player.floor += 1
+
+    return battle_result
+
+def floor10(player: MainCharacter, monster: str, boss: str, level_min_monster: int = 1, level_max_monster: int = 10 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
+
+    xp_before_battle = player.xp
+
+    monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters, boss)
 
     floor_decorator('Andar 10')
 
     battle_result = fight(player, monsters, 'Andar 10')
 
-    return battle_result
-
-
+    xp_after_battle = player.xp
     
+    xp_screen(xp_before_battle, xp_after_battle)
+  
+    if battle_result: player.floor = 0
+
+    return battle_result
