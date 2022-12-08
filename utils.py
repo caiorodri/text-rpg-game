@@ -91,11 +91,13 @@ def animated_text(text: str, time: float = 0.05):
         print(letter, end='')
         sleep(time)
 
-def xp_screen(xp_before: int, xp_after: int) -> None:
+def resource_screen(xp_before: int, xp_after: int, gold_before: int, gold_after: int) -> None:
 
-    text_decorator(' XP Ganho na Batalha ', 'cian')
+    text_decorator(' Ganhos da Batalha ', 'cian')
 
-    animated_text(f'\033[1;36m{xp_before}\033[m XP + \033[1;36m{xp_after - xp_before} XP\033[m -> \033[1;36m{xp_after}\033[m XP')
+    animated_text(f'\033[1;36m{xp_before}\033[m XP + \033[1;36m{xp_after - xp_before}\033[m XP -> \033[1;36m{xp_after}\033[m XP\n')
+
+    animated_text(f'\033[1;33m{gold_before}\033[m G + \033[1;33m{gold_after - gold_before}\033[m G -> \033[1;33m{gold_after}\033[m G')
 
     animated_text(input("\n\n\033[1;33mPressione enter para continuar...\033[m"))
 
@@ -124,4 +126,7 @@ floor 1
 
 floor {floor - 3}
 ''')         
+
+    print()
     
+    animated_text(input('\033[1;33mPresisone enter para continuar...\033[m'))
