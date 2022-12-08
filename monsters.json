@@ -30,6 +30,36 @@
                 "ataque" : 35,
                 "escudo" : 7,
                 "xp" : 35
+            },
+            "level6" : {
+                "vida" : 58,
+                "ataque" : 40,
+                "escudo" : 9,
+                "xp" : 40
+            },
+            "level7" : {
+                "vida" : 66,
+                "ataque" : 45,
+                "escudo" : 11,
+                "xp" : 45
+            },
+            "level8" : {
+                "vida" : 74,
+                "ataque" : 50,
+                "escudo" : 13,
+                "xp" : 50
+            },
+            "level9" : {
+                "vida" : 82,
+                "ataque" : 55,
+                "escudo" : 15,
+                "xp" : 55
+            },
+            "level10" : {
+                "vida" : 90,
+                "ataque" : 60,
+                "escudo" : 18,
+                "xp" : 60
             }
         },
         "goblin" : {
@@ -60,8 +90,38 @@
             "level5" : {
                 "vida" : 65,
                 "ataque" : 40,
-                "escudo" : 4,
+                "escudo" : 10,
                 "xp" : 42
+            },
+            "level6" : {
+                "vida" : 70,
+                "ataque" : 48,
+                "escudo" : 13,
+                "xp" : 49
+            },
+            "level7" : {
+                "vida" : 75,
+                "ataque" : 56,
+                "escudo" : 16,
+                "xp" : 56
+            },
+            "level8" : {
+                "vida" : 80,
+                "ataque" : 64,
+                "escudo" : 19,
+                "xp" : 63
+            },
+            "level9" : {
+                "vida" : 85,
+                "ataque" : 72,
+                "escudo" : 22,
+                "xp" : 70
+            },
+            "level10" : {
+                "vida" : 90,
+                "ataque" : 80,
+                "escudo" : 25,
+                "xp" : 77
             }
         },
         "esqueleto" : {
@@ -94,38 +154,98 @@
                 "ataque" : 48,
                 "escudo" : 10,
                 "xp" : 52
+            },
+            "level6" : {
+                "vida" : 61,
+                "ataque" : 57,
+                "escudo" : 13,
+                "xp" : 60
+            },
+            "level7" : {
+                "vida" : 67,
+                "ataque" : 66,
+                "escudo" : 16,
+                "xp" : 68
+            },
+            "level8" : {
+                "vida" : 73,
+                "ataque" : 75,
+                "escudo" : 19,
+                "xp" : 76
+            },
+            "level9" : {
+                "vida" : 79,
+                "ataque" : 84,
+                "escudo" : 22,
+                "xp" : 84
+            },
+            "level10" : {
+                "vida" : 85,
+                "ataque" : 93,
+                "escudo" : 25,
+                "xp" : 92
             }
         },
-        "Orc" : {
+        "orc" : {
             "level1" : {
-                "vida" : 70,
+                "vida" : 50,
                 "ataque" : 20,
                 "escudo" : 12,
                 "xp" : 35
             },
             "level2" : {
-                "vida" : 80,
+                "vida" : 60,
                 "ataque" : 25,
                 "escudo" : 15,
-                "xp" : 42
+                "xp" : 43
             },
             "level3" : {
-                "vida" : 90,
+                "vida" : 70,
                 "ataque" : 30,
                 "escudo" : 18,
-                "xp" : 49
+                "xp" : 51
             },
             "level4" : {
-                "vida" : 100,
+                "vida" : 80,
                 "ataque" : 35,
                 "escudo" : 21,
-                "xp" : 56
+                "xp" : 59
             },
             "level5" : {
-                "vida" : 110,
+                "vida" : 90,
                 "ataque" : 40,
                 "escudo" : 24,
-                "xp" : 63
+                "xp" : 67
+            },
+            "level6" : {
+                "vida" : 100,
+                "ataque" : 45,
+                "escudo" : 27,
+                "xp" : 75
+            },
+            "level7" : {
+                "vida" : 110,
+                "ataque" : 50,
+                "escudo" : 30,
+                "xp" : 83
+            },
+            "level8" : {
+                "vida" : 120,
+                "ataque" : 55,
+                "escudo" : 33,
+                "xp" : 91
+            },
+            "level9" : {
+                "vida" : 130,
+                "ataque" : 60,
+                "escudo" : 36,
+                "xp" : 99
+            },
+            "level10" : {
+                "vida" : 140,
+                "ataque" : 65,
+                "escudo" : 40,
+                "xp" : 107
             }
         }
     }
