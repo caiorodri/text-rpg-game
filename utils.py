@@ -93,8 +93,35 @@ def animated_text(text: str, time: float = 0.05):
 
 def xp_screen(xp_before: int, xp_after: int) -> None:
 
-    text_decorator('XP Ganho na Batalha', 'cian')
+    text_decorator(' XP Ganho na Batalha ', 'cian')
 
-    animated_text(f'\033[1;36m{xp_before}\033[m + \033[1;36m{xp_after - xp_before}\033[m -> \033[1;36m{xp_after}\033[m XP')
+    animated_text(f'\033[1;36m{xp_before}\033[m XP + \033[1;36m{xp_after - xp_before} XP\033[m -> \033[1;36m{xp_after}\033[m XP')
 
     animated_text(input("\n\n\033[1;33mPressione enter para continuar...\033[m"))
+
+def lose_floors(floor):
+
+    text_decorator('Derrota na Batalha', 'red')
+
+    if floor <= 3:
+        
+        animated_text(f'''floor {floor}
+
+| | | |        
+| | | |
+| | | |
+
+floor 1
+''')
+
+    else:
+
+        animated_text(f'''floor {floor}
+
+| | | | |
+| | | | |
+| | | | |
+
+floor {floor - 3}
+''')         
+    

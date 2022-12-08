@@ -2,7 +2,7 @@ from time import sleep
 from typing import List
 from characters import Monster, MainCharacter
 from random import randint
-from utils import animated_text, clean, text_decorator, xp_screen
+from utils import animated_text, clean, lose_floors, text_decorator, xp_screen
 
 
 def fight_screen(player: MainCharacter, monsters: List[Monster], floor: str) -> None:
@@ -39,19 +39,19 @@ def damage_screen(player: MainCharacter, monsters: List[Monster], player_target:
 
                 if player.damage - monster.shield <= 0:                 
                     
-                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m0\033[m ->', 0.075)
+                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m0\033[m ->', 0.035)
                     
                 else:
 
-                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m{player.damage - monster.shield}\033[m ->', 0.075)
+                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m{player.damage - monster.shield}\033[m ->', 0.035)
 
                 if (monster.life - (player.damage - monster.shield)) <= 0:
 
-                    animated_text(' \033[1;31m0\033[m HP] ( \033[1;31mDIED\033[m )\n', 0.075)
+                    animated_text(' \033[1;31m0\033[m HP] ( \033[1;31mDIED\033[m )\n', 0.035)
 
                 else:
 
-                    animated_text(f' \033[1;31m{monster.life - (player.damage - monster.shield)}\033[m HP]\n', 0.075)
+                    animated_text(f' \033[1;31m{monster.life - (player.damage - monster.shield)}\033[m HP]\n', 0.035)
 
                 if (player.damage - monster.shield) > 0:
     
@@ -79,7 +79,13 @@ def damage_screen(player: MainCharacter, monsters: List[Monster], player_target:
 
     else:
 
-        animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage - player.shield}\033[m -> \033[1;32m{player.life - (monsters_damage - player.shield)}\033[m HP]')
+        if player.life - (monsters_damage - player.shield) <= 0:
+
+            animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage - player.shield}\033[m -> \033[1;32m0\033[m HP]')
+
+        else:
+            
+            animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage - player.shield}\033[m -> \033[1;32m{player.life - (monsters_damage - player.shield)}\033[m HP]')
 
         player.life -= (monsters_damage - player.shield)
 
@@ -89,6 +95,7 @@ def damage_screen(player: MainCharacter, monsters: List[Monster], player_target:
 
 def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
 
+    player.check_level()
     player.check_stats()
 
     battle_result = 'Andamento'
@@ -142,6 +149,15 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
         if player.life <= 0:
 
             battle_result = False
+            player.deaths += 1
+
+            player.update_deaths()
+
+            lose_floors(player.floor)
+
+            if player.floor <= 3: player.floor = 1
+            
+            else: player.floor -= 3
 
     return battle_result
 
@@ -172,8 +188,6 @@ def floor_decorator(floor):
     clean()
 
     text_decorator(f'         {floor}         ', color='yellow')
-
-# DUNGEON 1
 
 def floor1(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
 
@@ -413,7 +427,5 @@ def floor10(player: MainCharacter, monster: str, boss: str, level_min_monster: i
     xp_after_battle = player.xp
     
     xp_screen(xp_before_battle, xp_after_battle)
-  
-    if battle_result: player.floor = 0
 
     return battle_result

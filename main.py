@@ -1,58 +1,57 @@
 import getpass
+from time import sleep
 from dungeons import dungeon1
-from utils import main_decorator
+from utils import animated_text, main_decorator, text_decorator
 import re
 from characters import MainCharacter
-
+import sqlite3
 
 def get_name() -> str:
 
     valid = False
     name = ''
-    count = 0
 
     while not valid:
 
         valid = True
         main_decorator()
-        if count == 0: name = input('Digite seu nome: ').strip()
-        elif 1 <= count < 2 : name = input('Digite um nome válido: ').strip()
-        else: name = input('O nome não pode conter números. ( Digite seu nome real ): ')
+        
+        name = input('Digite seu nome: ').strip()
 
-        num_list = '0123456789'
+        invalid_characters = '0123456789!@#$%&*()_-<,.>;:[{}]|+-*/'
 
-        for num in num_list:
+        for character in invalid_characters:
             
-            if num in name: valid = False
+            if character in name:
+                
+                valid = False
 
-        count += 1
+        if not valid:
+
+            animated_text('\n\033[1;33mNome inválido! ( Digite seu nome real )\033[m\n')
+            sleep(1.5)
 
     return name.title()    
 
-def get_email() -> str:
+def get_email(name: str = 'usuario') -> str:
 
     valid = False
     email = ''
-    count = 0
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,}$'
 
     while not valid:
 
+        valid = True
         main_decorator()
 
-        valid = True
-        
-        if count == 0:
+        email = input('Digite seu e-mail: ').strip()
 
-            email = input('Digite seu e-mail: ').strip()
-
-        else:
-
-            email = input('Digite um e-mail válido (Ex: usuario@gmail.com):' )
-        
         if not (re.search(regex,email)):
             
             valid = False
+
+            animated_text(f'\n\033[1;33mDigite um e-mail válido (Ex: {name.lower()}@gmail.com)\033[m\n' )
+            sleep(1.5)        
         
     return email
 
@@ -61,45 +60,62 @@ def get_password() -> str:
     valid = False
     password = ''
 
-    main_decorator()
-
     while not valid:
-        
+
+        main_decorator()
+
         valid = True
         password = getpass.getpass(prompt='Digite sua Senha: ', stream=None)
 
         if len(password) < 8: 
             
             valid = False
-            print('\nA senha deve conter pelo menos 8 caracteres...\n')
+            animated_text('\n\033[1;33mA senha deve conter pelo menos 8 caracteres...\033[m\n')
+            sleep(1)
             continue
 
         if not re.search("[a-z]", password) or not re.search("[A-Z]", password) or not re.search("[0-9]", password) or not re.search("[_@$]", password) or re.search("\s", password): 
             
             valid = False
-            print('\nA senha deve conter pelo menos 1 letra minuscula, 1 maiuscula, um número e 1 caractere especial...\n')
+            animated_text('\n\033[1;33mA senha deve conter pelo menos 1 letra minuscula, 1 maiuscula, um número e 1 caractere especial...\033[m\n')
+            sleep(1)
             continue
 
     return password
 
-def get_username() -> str:
+def get_username(query) -> str:
     
     valid = False
     username = ''
 
-    main_decorator()
-
     while not valid:
-        
+
+        main_decorator()
+
         valid = True
         username = input('Digite seu nome de usuário: ').strip()
         
-        if len(username) > 14:
+        if len(username) > 14 or len(username) < 3:
             
             valid = False
             print('\nO nome de usuário deve conter entre 3-14 caracteres...\n')
             continue
         
+        try:
+            
+            for users in query:
+
+                if username == users[4]:
+
+                    animated_text('\n\033[1;33mNome de Usuário já esta sendo usado!\033[m\n')
+                    valid = False
+                    sleep(2)
+                    continue
+        
+        except IndexError:
+
+            pass
+
     return username
 
 def get_class() -> str:
@@ -139,18 +155,202 @@ def get_class() -> str:
     
     return user_class
 
-def get_data():
+def check_email(name, query) -> str:
 
-    # name = get_name()
-    # email = get_email()
-    # password = get_password()
-    username = get_username()
-    user_class = get_class()
+    valid = False
+    email = ''
+
+    while not valid:
+
+        valid = True
+
+        email = get_email(name)
+
+        regex = r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'
+
+        if not (re.search(regex, email)): valid = False
+
+        if not valid:
+
+            animated_text('\n\033[1;33mEmail inválido!\033[m\n')
+            valid = False
+            sleep(2)
+            continue
+        
+        try:
+            
+            for users in query:
+
+                if email == users[2]:
+
+                    animated_text('\n\033[1;33mEmail existente! Tente fazer login.\033[m\n')
+                    valid = False
+                    sleep(2)
+                    continue
+
+        except IndexError:
+
+            pass
+
+    return email
+
+def register() -> MainCharacter:
+
+    valid = False
+
+    connection = sqlite3.connect('user.db')
+    cursor = connection.cursor()
+
+    cursor.execute('SELECT * FROM users')
+
+    query = cursor.fetchall()
+
+    name = ''
+    password = ''
+    email = ''
+    username = ''
+    user_class = ''
+
+    while not valid:
+        
+        valid = True
+
+        name = get_name()
+        email = check_email(name, query)        
+        password = get_password()
+
+        if len(password) < 8:
+
+            valid = False
+            animated_text('\n\033[1;33mA senha deve conter 8 ou mais caracteres!\033[m\n')
+            continue
+
+        username = get_username(query)
+        
+        user_class = get_class()
 
     user = MainCharacter(username, user_class)
 
+    cursor.execute(f"INSERT INTO users ('name', 'email', 'password', 'username', 'user_class') VALUES ('{name}', '{email}', '{password}', '{username}','{user_class}')")
+
+    connection.commit()
+    cursor.close()
+    connection.close()
+
     return user
 
-user = get_data()
+def login() -> MainCharacter:
 
-dungeon1(user)
+    valid = False
+    query = []
+
+    while not valid:
+
+        valid = True
+
+        email = get_email()
+        password = getpass.getpass(prompt='Digite sua Senha: ', stream=None)
+
+        connection = sqlite3.connect('user.db')
+        cursor = connection.cursor()
+
+        cursor.execute(f"SELECT * FROM users WHERE email = '{email}'")
+        query = cursor.fetchall()
+
+        try:
+            
+            right_password = query[0][3]
+
+        except IndexError:
+
+            animated_text('\n\033[1;33Email ou senha invalidos!\033[m\n')
+            valid = False
+            sleep(2)
+
+            continue
+
+        if right_password != password:
+
+            valid = False
+            animated_text('\n\033[1;33Email ou senha invalidos!\033[m\n')
+            continue
+
+        cursor.close()
+        connection.close()
+        
+    return MainCharacter(name = query[0][1], user_class = query[0][5], level = query[0][6],xp = query[0][7], dungeon = query[0][8])
+
+def init():
+
+    valid = False
+
+    player = MainCharacter('', '')
+    user_choice = ''
+
+    while not valid:
+
+        valid = True
+
+        text_decorator('My Little Game', 'cian')
+
+        animated_text('''Escolha uma opção
+
+[0] - Sair
+
+[1] - Login
+[2] - Registrar-me
+
+\033[1;33mEscolha do Usuário:\033[m ''')
+    
+        user_choice = input('')
+
+        if user_choice == '0': break
+
+        if user_choice == '1': player = login()
+
+        elif user_choice == '2': player = register()
+
+        else:
+
+            valid = False
+            print()
+            animated_text('\033[1;31mOpção invalida! Digite "0", "1" ou "2".\033[m')
+            sleep(2)
+            continue
+    
+    if user_choice != '0':
+        
+        player.show_stats()
+
+        animated_text('\033[1;33mPressione enter para continuar...\033[m')
+
+        input(' ')
+
+        history(player)
+
+    animated_text('\n\033[1;32mObrigado por jogar meu jogo! Volte sempre\033[m\n')
+
+    input('\n\033[1;33mPressione enter para continuar...\033[m')
+
+def history(player: MainCharacter):
+
+    while True:
+
+        if player.dungeon == 1:
+    
+            result_dungeon = dungeon1(player)
+
+            player.check_stats()
+
+            if result_dungeon:
+
+                player.dungeon += 1
+
+        player.level_up()
+        player.update_stats()
+
+        if player.dungeon == 2:
+
+            break
+
+init()
