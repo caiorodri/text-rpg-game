@@ -1,8 +1,8 @@
 from time import sleep
 from typing import List
 from characters import Monster, MainCharacter
-from random import randint
-from utils import animated_text, clean, lose_floors, text_decorator, xp_screen
+from random import choice, randint
+from utils import animated_text, clean, lose_floors, text_decorator, resource_screen
 
 
 def fight_screen(player: MainCharacter, monsters: List[Monster], floor: str) -> None:
@@ -139,6 +139,7 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
             if monster.life <= 0:
                     
                 player.xp += monster.xp
+                player.gold += monster.gold
 
                 monsters.pop(index)
 
@@ -161,13 +162,13 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
 
     return battle_result
 
-def get_monsters(name: str, min_level: int = 1, max_level: int = 3, min_quantity_monster: int = 1, max_quantity_monster: int = 3, boss: str = 'nothing') -> list:
+def get_monsters(monsters: List[str], min_level: int = 1, max_level: int = 3, min_quantity_monster: int = 1, max_quantity_monster: int = 3, boss: List[str] = ['nothing']) -> list:
 
-    monsters = []
+    list_monsters = []
 
-    if boss != 'nothing':
+    if boss[0] != 'nothing':
 
-        monsters.append(Monster(boss, 3))
+        list_monsters.append(Monster(choice(boss), 3))
 
     quantity_monsters = randint(min_quantity_monster, max_quantity_monster)
 
@@ -175,13 +176,13 @@ def get_monsters(name: str, min_level: int = 1, max_level: int = 3, min_quantity
 
         level_monster = randint(min_level, max_level)
 
-        monsters.append(Monster(name, level_monster))
+        list_monsters.append(Monster(choice(monsters), level_monster))
 
-    for monster in monsters:
+    for monster in list_monsters:
 
         monster.check_stats()
 
-    return monsters
+    return list_monsters
 
 def floor_decorator(floor):
 
@@ -189,7 +190,7 @@ def floor_decorator(floor):
 
     text_decorator(f'         {floor}         ', color='yellow')
 
-def floor1(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
+def floor1(player: MainCharacter, monster: List[str], level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -198,6 +199,7 @@ def floor1(player: MainCharacter, monster: str, level_min_monster: int = 1, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -206,15 +208,16 @@ def floor1(player: MainCharacter, monster: str, level_min_monster: int = 1, leve
             battle_result = fight(player, monsters, 'Andar 1')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
 
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
  
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor2(player: MainCharacter, monster: str, level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor2(player: MainCharacter, monster: List[str], level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -223,6 +226,7 @@ def floor2(player: MainCharacter, monster: str, level_min_monster: int = 1, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -231,15 +235,16 @@ def floor2(player: MainCharacter, monster: str, level_min_monster: int = 1, leve
             battle_result = fight(player, monsters, 'Andar 2')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
 
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
  
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor3(player: MainCharacter, monster: str, level_min_monster: int = 2, level_max_monster: int = 4 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor3(player: MainCharacter, monster: List[str], level_min_monster: int = 2, level_max_monster: int = 4 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -248,6 +253,7 @@ def floor3(player: MainCharacter, monster: str, level_min_monster: int = 2, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -256,15 +262,16 @@ def floor3(player: MainCharacter, monster: str, level_min_monster: int = 2, leve
             battle_result = fight(player, monsters, 'Andar 3')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
             
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
   
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor4(player: MainCharacter, monster: str, level_min_monster: int = 3, level_max_monster: int = 5 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor4(player: MainCharacter, monster: List[str], level_min_monster: int = 3, level_max_monster: int = 5 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -273,6 +280,7 @@ def floor4(player: MainCharacter, monster: str, level_min_monster: int = 3, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -281,15 +289,16 @@ def floor4(player: MainCharacter, monster: str, level_min_monster: int = 3, leve
             battle_result = fight(player, monsters, 'Andar 4')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
             
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
     
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor5(player: MainCharacter, monster: str, level_min_monster: int = 4, level_max_monster: int = 6 , min_quantity_monsters: int = 3, max_quantity_monsters: int = 5) -> bool:
+def floor5(player: MainCharacter, monster: List[str], level_min_monster: int = 4, level_max_monster: int = 6 , min_quantity_monsters: int = 3, max_quantity_monsters: int = 5) -> bool:
 
     battle_result = True
 
@@ -298,6 +307,7 @@ def floor5(player: MainCharacter, monster: str, level_min_monster: int = 4, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -306,15 +316,16 @@ def floor5(player: MainCharacter, monster: str, level_min_monster: int = 4, leve
             battle_result = fight(player, monsters, 'Andar 5')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
             
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
   
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor6(player: MainCharacter, monster: str, level_min_monster: int = 5, level_max_monster: int = 7 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor6(player: MainCharacter, monster: List[str], level_min_monster: int = 5, level_max_monster: int = 7 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -323,6 +334,7 @@ def floor6(player: MainCharacter, monster: str, level_min_monster: int = 5, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -331,15 +343,16 @@ def floor6(player: MainCharacter, monster: str, level_min_monster: int = 5, leve
             battle_result = fight(player, monsters, 'Andar 6')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
             
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
   
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor7(player: MainCharacter, monster: str, level_min_monster: int = 6, level_max_monster: int = 8 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor7(player: MainCharacter, monster: List[str], level_min_monster: int = 6, level_max_monster: int = 8 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -348,6 +361,7 @@ def floor7(player: MainCharacter, monster: str, level_min_monster: int = 6, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -356,15 +370,16 @@ def floor7(player: MainCharacter, monster: str, level_min_monster: int = 6, leve
             battle_result = fight(player, monsters, 'Andar 7')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
             
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
   
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor8(player: MainCharacter, monster: str, level_min_monster: int = 7, level_max_monster: int = 9 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor8(player: MainCharacter, monster: List[str], level_min_monster: int = 7, level_max_monster: int = 9 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -373,6 +388,7 @@ def floor8(player: MainCharacter, monster: str, level_min_monster: int = 7, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -381,15 +397,16 @@ def floor8(player: MainCharacter, monster: str, level_min_monster: int = 7, leve
             battle_result = fight(player, monsters, 'Andar 8')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
             
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
   
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor9(player: MainCharacter, monster: str, level_min_monster: int = 8, level_max_monster: int = 10 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor9(player: MainCharacter, monster: List[str], level_min_monster: int = 8, level_max_monster: int = 10 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -398,6 +415,7 @@ def floor9(player: MainCharacter, monster: str, level_min_monster: int = 8, leve
         if battle_result:
 
             xp_before_battle = player.xp
+            gold_before_battle = player.gold
 
             monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters)
 
@@ -406,17 +424,19 @@ def floor9(player: MainCharacter, monster: str, level_min_monster: int = 8, leve
             battle_result = fight(player, monsters, 'Andar 9')
 
             xp_after_battle = player.xp
+            gold_after_battle = player.gold
             
-            xp_screen(xp_before_battle, xp_after_battle)
+            resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
             player.level_up()
   
     if battle_result: player.floor += 1
 
     return battle_result
 
-def floor10(player: MainCharacter, monster: str, boss: str, level_min_monster: int = 1, level_max_monster: int = 10 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
+def floor10(player: MainCharacter, monster: List[str], boss: List[str], level_min_monster: int = 1, level_max_monster: int = 10 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
 
     xp_before_battle = player.xp
+    gold_before_battle = player.gold
 
     monsters = get_monsters(monster, level_min_monster, level_max_monster, min_quantity_monsters, max_quantity_monsters, boss)
 
@@ -425,7 +445,8 @@ def floor10(player: MainCharacter, monster: str, boss: str, level_min_monster: i
     battle_result = fight(player, monsters, 'Andar 10')
 
     xp_after_battle = player.xp
+    gold_after_battle = player.gold
     
-    xp_screen(xp_before_battle, xp_after_battle)
+    resource_screen(xp_before_battle, xp_after_battle, gold_before_battle, gold_after_battle)
 
     return battle_result
