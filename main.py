@@ -344,27 +344,33 @@ def level_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
     # MÉTODO RUIM SE TIVER MUITOS USUÁRIOS
 
+    print('TOP 10 JOGADORES\n')
+
     for indice, user in enumerate(result):
 
         if indice < 10:
 
             if user[0] == name:
                 
-                animated_text(f'\033[1;33m{indice+1}\033[m - {user[0]} - {user[1].title()} - Level {user[2]}')
+                animated_text(f'\033[1;33m{indice+1}°\033[m - \033[1;33m{user[0]}\033[m / {user[1].title()} / Level {user[2]}')
                 print()
 
             else: 
                 
-                print(f'{indice+1} - {user[0]} - {user[1].title()} - Level {user[2]}')
+                if indice == 9:
+                    
+                    print(f'{indice+1}°- {user[0]} / {user[1].title()} / Level {user[2]}')
+                    print()
 
-                if indice == 9: print()
+                else:
+                    print(f'{indice+1}° - {user[0]} / {user[1].title()} / Level {user[2]}')
 
         elif user[0] == name:
 
-            animated_text(f'\033[1;33m{indice+1}\033[m - {user[0]} - {user[1].title()} - Level {user[2]}')
+            animated_text(f'\033[1;33m{indice+1}°\033[m - \033[1;33m{user[0]}\033[m / {user[1].title()} / Level {user[2]}')
             print()
-    
-    animated_text(input('\n\033[1;33mPressione enter para voltar\033[m'))
+
+    animated_text(input('\033[1;33mPressione enter para voltar...\033[m'))
 
 def deaths_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
@@ -376,27 +382,32 @@ def deaths_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
     # MÉTODO RUIM SE TIVER MUITOS USUÁRIOS
 
+    print('TOP 10 JOGADORES\n')
+
     for indice, user in enumerate(result):
 
         if indice < 10:
 
             if user[0] == name:
                 
-                animated_text(f'\033[1;33m{indice+1}\033[m - {user[0]} - {user[1].title()} - Level {user[2]} - Deaths {user[3]}')
+                animated_text(f'\033[1;33m{indice+1}°\033[m - \033[1;33m{user[0]}\033[m / {user[1].title()} / Level {user[2]} / Deaths: \033[1;31m{user[3]}\033[m')
                 print()
 
             else:
-                
-                print(f'{indice+1} - {user[0]} - {user[1].title()} - Level {user[2]} - Deaths {user[3]}')
 
-                if indice == 9: print()
+                if indice == 9:
+
+                     print(f'{indice+1}°- {user[0]} / {user[1].title()} / Level {user[2]} / Deaths: \033[1;31m{user[3]}\033[m')
+                     print()
+
+                else: print(f'{indice+1}° - {user[0]} / {user[1].title()} / Level {user[2]} / Deaths: \033[1;31m{user[3]}\033[m')
 
         elif user[0] == name:
 
-            animated_text(f'\033[1;33m{indice+1}\033[m - {user[0]} - {user[1].title()} - Level {user[2]} - Deaths {user[3]}')
-            print()
+            animated_text(f'\033[1;33m{indice+1}°\033[m - \033[1;33m{user[0]}\033[m / {user[1].title()} / Level {user[2]} / Deaths: \033[1;31m{user[3]}\033[m')
+            print('')
     
-    animated_text(input('\n\033[1;33mPressione enter para voltar\033[m'))
+    animated_text(input('\033[1;33mPressione enter para voltar...\033[m'))
 
 def gold_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
@@ -408,27 +419,32 @@ def gold_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
     # MÉTODO RUIM SE TIVER MUITOS USUÁRIOS
 
+    print('TOP 10 JOGADORES\n')
+
     for indice, user in enumerate(result):
 
         if indice < 10:
 
             if user[0] == name:
                 
-                animated_text(f'\033[1;33m{indice+1}\033[m - {user[0]} - {user[1].title()} - Level {user[2]} - Gold {user[3]}')
+                animated_text(f'\033[1;33m{indice+1}\033[m - \033[1;33m{user[0]}\033[m / {user[1].title()} / Level {user[2]} / Gold: \033[1;33m{user[3]}\033[m')
                 print()
 
             else:
                 
-                print(f'{indice+1} - {user[0]} - {user[1].title()} - Level {user[2]} - Gold {user[3]}')
+                if indice == 9:
+                    
+                    print(f'{indice+1}- {user[0]} / {user[1].title()} / Level {user[2]} / Gold: \033[1;33m{user[3]}\033[m')
+                    print()
 
-                if indice == 9: print()
+                else: print(f'{indice+1} - {user[0]} / {user[1].title()} / Level {user[2]} / Gold: \033[1;33m{user[3]}\033[m')
 
         elif user[0] == name:
 
-            animated_text(f'\033[1;33m{indice+1}\033[m - {user[0]} - {user[1].title()} - Level {user[2]} - Gold {user[3]}')
+            animated_text(f'\033[1;33m{indice+1}\033[m - \033[1;33m{user[0]}\033[m / {user[1].title()} / Level {user[2]} / Gold: \033[1;33m{user[3]}\033[m')
             print()
-    
-    animated_text(input('\n\033[1;33mPressione enter para voltar\033[m'))
+
+    animated_text(input('\033[1;33mPressione enter para voltar...\033[m'))
 
 def dungeon_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
@@ -440,27 +456,34 @@ def dungeon_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
     # MÉTODO RUIM SE TIVER MUITOS USUÁRIOS
 
+    print('TOP 10 JOGADORES\n')
+
     for indice, user in enumerate(result):
 
         if indice < 10:
 
             if user[0] == name:
                 
-                animated_text(f'\033[1;33m{indice+1}\033[m - {user[0]} - {user[1].title()} - Level {user[2]} - Dungeon {user[3]}')
+                animated_text(f'\033[1;33m{indice+1}°\033[m - \033[1;33m{user[0]}\033[m / {user[1].title()} / Level {user[2]} / Dungeon: {user[3]}')
                 print()
 
             else:
-                
-                print(f'{indice+1} - {user[0]} - {user[1].title()} - Level {user[2]} - Dungeon {user[3]}')
 
-                if indice == 9: print()
+                if indice == 9: 
+                    
+                    print(f'{indice+1}°- {user[0]} / {user[1].title()} / Level {user[2]} / Dungeon: {user[3]}')
+                    print()
+
+                else: print(f'{indice+1}° - {user[0]} / {user[1].title()} / Level {user[2]} / Dungeon: {user[3]}')
 
         elif user[0] == name:
 
-            print(f'\033[1;33m{indice+1}\033[m - {user[0]} - {user[1].title()} - Level {user[2]} - Duugeon {user[3]}')
+            animated_text(f'\033[1;33m{indice+1}°\033[m - \033[1;33m{user[0]}\033[m / {user[1].title()} / Level {user[2]} / Duugeon: {user[3]}')
             print()
+
+            break
     
-    animated_text(input('\n\033[1;33mPressione enter para voltar\033[m'))
+    animated_text(input('\033[1;33mPressione enter para voltar...\033[m'))
 
 def ranking(player: MainCharacter) -> None:
 
