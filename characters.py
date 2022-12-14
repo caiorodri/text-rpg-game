@@ -28,13 +28,19 @@ class Character(ABC):
 
 class MainCharacter(Character):
 
-    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 1, xp: int = 0, gold: int = 0, dungeon: int = 1, floor: int = 1, deaths: int = 0) -> None:
+    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 1, xp: int = 0, gold: int = 0, dungeon: int = 1, floor: int = 1, deaths: int = 0, life_increase: float = 0, damage_increase: float = 0, shield_increase: float = 0, gold_increase: float = 0, xp_increase: float = 0, dodge: float = 0) -> None:
         
         super().__init__(name, life, damage, shield, level, xp, gold)
         self.user_class = user_class
         self.dungeon = dungeon
         self.floor = floor
         self.deaths = deaths
+        self.life_increase = life_increase
+        self.damage_increase = damage_increase
+        self.shield_increase = shield_increase
+        self.gold_increase = gold_increase
+        self.xp_increase = xp_increase
+        self.dodge = dodge
 
         with open('stats.json', 'r') as file:
             
@@ -47,6 +53,10 @@ class MainCharacter(Character):
         self.life = self.stats["leveis"][user_level][self.user_class]['vida']
         self.damage = self.stats["leveis"][user_level][self.user_class]['ataque']
         self.shield = self.stats["leveis"][user_level][self.user_class]['escudo']
+
+        self.life += round(self.life * self.life_increase)
+        self.damage += round(self.damage * self.damage_increase)
+        self.shield += round(self.shield * self.shield_increase)
 
     def check_level(self):
 
@@ -82,7 +92,12 @@ class MainCharacter(Character):
 | Ataque: \033[1;36m{self.damage}\033[m
 | Escudo: \033[1;33m{self.shield}\033[m
 |
+| Aumento de Vida: \033[1;32m{int(self.life_increase * 100)}\033[m%
+| Aumento de Ataque: \033[1;36m{int(self.damage_increase * 100)}\033[m%
+| Aumento de Escudo: \033[1;33m{int(self.shield_increase * 100)}\033[m%
+|
 | Dungeon {self.dungeon}
+| Floor {self.floor}
 ''')
 
     def level_up(self) -> None:
@@ -101,19 +116,19 @@ class MainCharacter(Character):
 
             text_decorator('Level UP', 'cian')
             
-            animated_text(f"Level \033[1;34m{old_level}\033[m  ->  Level \033[1;34m{self.level}\033[m")
+            animated_text(f"Level \033[1;34m{old_level}\033[m  ->  Level \033[1;34m{self.level}\033[m", 0.035)
 
             print('\n')
 
-            animated_text(f"\033[1;32m{old_life}\033[m HP  ->  \033[1;32m{self.life}\033[m HP")
+            animated_text(f"\033[1;32m{old_life}\033[m HP  ->  \033[1;32m{self.life}\033[m HP", 0.035)
 
             print()
                         
-            animated_text(f'\033[1;36m{old_damage}\033[m ATK  ->  \033[1;36m{self.damage}\033[m ATK')
+            animated_text(f'\033[1;36m{old_damage}\033[m ATK  ->  \033[1;36m{self.damage}\033[m ATK', 0.035)
             
             print()
             
-            animated_text(f'\033[1;33m{old_shield}\033[m DEF  ->  \033[1;33m{self.shield}\033[m DEF')
+            animated_text(f'\033[1;33m{old_shield}\033[m DEF  ->  \033[1;33m{self.shield}\033[m DEF', 0.035)
 
             animated_text(input('\n\n\033[1;33mPresisone enter para continuar...\033[m'))
 
@@ -122,7 +137,7 @@ class MainCharacter(Character):
         connection = sqlite3.connect('user.db')
         cursor = connection.cursor()
 
-        cursor.execute(f"UPDATE users SET user_level = '{self.level}', user_class = '{self.user_class}', user_xp = '{self.xp}', user_gold = '{self.gold}', user_dungeon = '{self.dungeon}', user_floors = '{self.floor}', deaths = '{self.deaths}', user_floor = '{self.floor}' WHERE username = '{self.name}'")
+        cursor.execute(f"UPDATE users SET user_level = '{self.level}', user_class = '{self.user_class}', user_xp = '{self.xp}', user_gold = '{self.gold}', user_dungeon = '{self.dungeon}', user_floor = '{self.floor}', deaths = '{self.deaths}', user_floor = '{self.floor}', gold_increase = '{self.gold_increase}', xp_increase = '{self.xp_increase}', dodge = '{self.dodge}' WHERE username = '{self.name}'")
 
         connection.commit()
         cursor.close()
