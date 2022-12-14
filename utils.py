@@ -1,3 +1,4 @@
+import json
 import os
 from time import sleep
 
@@ -130,3 +131,62 @@ floor {floor - 3}
     print()
     
     animated_text(input('\033[1;33mPresisone enter para continuar...\033[m'))
+
+def write_stats():
+
+    dict_stats = {"leveis" : {}, "xp" : {}}
+
+    heroes_list = ["guerreiro", "mago", "arqueiro"]
+
+    xp = 100
+    xp_increase = 100
+
+    warrior_atk = 25
+    warrior_atk_increase = 3
+    warrior_life = 100
+    warrior_life_increase = 10
+    warrior_shield = 10
+    warrior_shield_increase = 2
+
+    mage_atk = 30
+    mage_atk_increase = 6
+    mage_life = 75
+    mage_life_increase = 8
+    mage_shield = 7
+    mage_shield_increase = 1
+
+    archer_atk = 25
+    archer_atk_increase = 5
+    archer_life = 85
+    archer_life_increase = 9
+    archer_shield = 6
+    archer_shield_increase = 1
+
+    for indice in range(1, 51):
+
+        dict_stats["leveis"][f"level{indice}"] = {f"{heroes_list[0]}" : {"vida" : warrior_life, "ataque" : warrior_atk,"escudo" : warrior_shield}, f"{heroes_list[1]}" : {"vida" : mage_life, "ataque" : mage_atk, "escudo" : mage_shield}, f"{heroes_list[2]}" : {"vida" : archer_life, "ataque" : archer_atk, "escudo" : archer_shield}}
+
+        warrior_atk += warrior_atk_increase
+        warrior_life += warrior_life_increase
+        warrior_shield += warrior_shield_increase        
+
+        mage_atk += mage_atk_increase
+        mage_life += mage_life_increase
+        mage_shield += mage_shield_increase
+
+        archer_atk += archer_atk_increase
+        archer_life += archer_life_increase
+        archer_shield += archer_shield_increase
+
+    for indice in range(1, 51):
+        
+        dict_stats["xp"][f"level{indice}"] = xp
+
+        xp += xp_increase
+
+        if indice % 3 == 0:
+
+            xp_increase += 150
+    
+    with open('stats.json', 'w') as file:
+        json.dump(dict_stats, file, indent=4)
