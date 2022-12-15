@@ -1,364 +1,906 @@
 {
-    "leveis" : {
-        "level1" : {
-        "guerreiro" : {
-            "vida" : 100,
-            "ataque" : 20,
-            "escudo" : 10
+    "leveis": {
+        "level1": {
+            "guerreiro": {
+                "vida": 100,
+                "ataque": 25,
+                "escudo": 10
+            },
+            "mago": {
+                "vida": 75,
+                "ataque": 30,
+                "escudo": 7
+            },
+            "arqueiro": {
+                "vida": 85,
+                "ataque": 25,
+                "escudo": 6
+            }
         },
-        "mago" : {
-            "vida" : 75,
-            "ataque" : 30,
-            "escudo" : 7
+        "level2": {
+            "guerreiro": {
+                "vida": 110,
+                "ataque": 28,
+                "escudo": 12
+            },
+            "mago": {
+                "vida": 83,
+                "ataque": 36,
+                "escudo": 8
+            },
+            "arqueiro": {
+                "vida": 94,
+                "ataque": 30,
+                "escudo": 7
+            }
         },
-        "arqueiro" : {
-            "vida" : 85,
-            "ataque" : 25,
-            "escudo" : 6
+        "level3": {
+            "guerreiro": {
+                "vida": 120,
+                "ataque": 31,
+                "escudo": 14
+            },
+            "mago": {
+                "vida": 91,
+                "ataque": 42,
+                "escudo": 9
+            },
+            "arqueiro": {
+                "vida": 103,
+                "ataque": 35,
+                "escudo": 8
+            }
+        },
+        "level4": {
+            "guerreiro": {
+                "vida": 130,
+                "ataque": 34,
+                "escudo": 16
+            },
+            "mago": {
+                "vida": 99,
+                "ataque": 48,
+                "escudo": 10
+            },
+            "arqueiro": {
+                "vida": 112,
+                "ataque": 40,
+                "escudo": 9
+            }
+        },
+        "level5": {
+            "guerreiro": {
+                "vida": 140,
+                "ataque": 37,
+                "escudo": 18
+            },
+            "mago": {
+                "vida": 107,
+                "ataque": 54,
+                "escudo": 11
+            },
+            "arqueiro": {
+                "vida": 121,
+                "ataque": 45,
+                "escudo": 10
+            }
+        },
+        "level6": {
+            "guerreiro": {
+                "vida": 150,
+                "ataque": 40,
+                "escudo": 20
+            },
+            "mago": {
+                "vida": 115,
+                "ataque": 60,
+                "escudo": 12
+            },
+            "arqueiro": {
+                "vida": 130,
+                "ataque": 50,
+                "escudo": 11
+            }
+        },
+        "level7": {
+            "guerreiro": {
+                "vida": 160,
+                "ataque": 43,
+                "escudo": 22
+            },
+            "mago": {
+                "vida": 123,
+                "ataque": 66,
+                "escudo": 13
+            },
+            "arqueiro": {
+                "vida": 139,
+                "ataque": 55,
+                "escudo": 12
+            }
+        },
+        "level8": {
+            "guerreiro": {
+                "vida": 170,
+                "ataque": 46,
+                "escudo": 24
+            },
+            "mago": {
+                "vida": 131,
+                "ataque": 72,
+                "escudo": 14
+            },
+            "arqueiro": {
+                "vida": 148,
+                "ataque": 60,
+                "escudo": 13
+            }
+        },
+        "level9": {
+            "guerreiro": {
+                "vida": 180,
+                "ataque": 49,
+                "escudo": 26
+            },
+            "mago": {
+                "vida": 139,
+                "ataque": 78,
+                "escudo": 15
+            },
+            "arqueiro": {
+                "vida": 157,
+                "ataque": 65,
+                "escudo": 14
+            }
+        },
+        "level10": {
+            "guerreiro": {
+                "vida": 190,
+                "ataque": 52,
+                "escudo": 28
+            },
+            "mago": {
+                "vida": 147,
+                "ataque": 84,
+                "escudo": 16
+            },
+            "arqueiro": {
+                "vida": 166,
+                "ataque": 70,
+                "escudo": 15
+            }
+        },
+        "level11": {
+            "guerreiro": {
+                "vida": 200,
+                "ataque": 55,
+                "escudo": 30
+            },
+            "mago": {
+                "vida": 155,
+                "ataque": 90,
+                "escudo": 17
+            },
+            "arqueiro": {
+                "vida": 175,
+                "ataque": 75,
+                "escudo": 16
+            }
+        },
+        "level12": {
+            "guerreiro": {
+                "vida": 210,
+                "ataque": 58,
+                "escudo": 32
+            },
+            "mago": {
+                "vida": 163,
+                "ataque": 96,
+                "escudo": 18
+            },
+            "arqueiro": {
+                "vida": 184,
+                "ataque": 80,
+                "escudo": 17
+            }
+        },
+        "level13": {
+            "guerreiro": {
+                "vida": 220,
+                "ataque": 61,
+                "escudo": 34
+            },
+            "mago": {
+                "vida": 171,
+                "ataque": 102,
+                "escudo": 19
+            },
+            "arqueiro": {
+                "vida": 193,
+                "ataque": 85,
+                "escudo": 18
+            }
+        },
+        "level14": {
+            "guerreiro": {
+                "vida": 230,
+                "ataque": 64,
+                "escudo": 36
+            },
+            "mago": {
+                "vida": 179,
+                "ataque": 108,
+                "escudo": 20
+            },
+            "arqueiro": {
+                "vida": 202,
+                "ataque": 90,
+                "escudo": 19
+            }
+        },
+        "level15": {
+            "guerreiro": {
+                "vida": 240,
+                "ataque": 67,
+                "escudo": 38
+            },
+            "mago": {
+                "vida": 187,
+                "ataque": 114,
+                "escudo": 21
+            },
+            "arqueiro": {
+                "vida": 211,
+                "ataque": 95,
+                "escudo": 20
+            }
+        },
+        "level16": {
+            "guerreiro": {
+                "vida": 250,
+                "ataque": 70,
+                "escudo": 40
+            },
+            "mago": {
+                "vida": 195,
+                "ataque": 120,
+                "escudo": 22
+            },
+            "arqueiro": {
+                "vida": 220,
+                "ataque": 100,
+                "escudo": 21
+            }
+        },
+        "level17": {
+            "guerreiro": {
+                "vida": 260,
+                "ataque": 73,
+                "escudo": 42
+            },
+            "mago": {
+                "vida": 203,
+                "ataque": 126,
+                "escudo": 23
+            },
+            "arqueiro": {
+                "vida": 229,
+                "ataque": 105,
+                "escudo": 22
+            }
+        },
+        "level18": {
+            "guerreiro": {
+                "vida": 270,
+                "ataque": 76,
+                "escudo": 44
+            },
+            "mago": {
+                "vida": 211,
+                "ataque": 132,
+                "escudo": 24
+            },
+            "arqueiro": {
+                "vida": 238,
+                "ataque": 110,
+                "escudo": 23
+            }
+        },
+        "level19": {
+            "guerreiro": {
+                "vida": 280,
+                "ataque": 79,
+                "escudo": 46
+            },
+            "mago": {
+                "vida": 219,
+                "ataque": 138,
+                "escudo": 25
+            },
+            "arqueiro": {
+                "vida": 247,
+                "ataque": 115,
+                "escudo": 24
+            }
+        },
+        "level20": {
+            "guerreiro": {
+                "vida": 290,
+                "ataque": 82,
+                "escudo": 48
+            },
+            "mago": {
+                "vida": 227,
+                "ataque": 144,
+                "escudo": 26
+            },
+            "arqueiro": {
+                "vida": 256,
+                "ataque": 120,
+                "escudo": 25
+            }
+        },
+        "level21": {
+            "guerreiro": {
+                "vida": 300,
+                "ataque": 85,
+                "escudo": 50
+            },
+            "mago": {
+                "vida": 235,
+                "ataque": 150,
+                "escudo": 27
+            },
+            "arqueiro": {
+                "vida": 265,
+                "ataque": 125,
+                "escudo": 26
+            }
+        },
+        "level22": {
+            "guerreiro": {
+                "vida": 310,
+                "ataque": 88,
+                "escudo": 52
+            },
+            "mago": {
+                "vida": 243,
+                "ataque": 156,
+                "escudo": 28
+            },
+            "arqueiro": {
+                "vida": 274,
+                "ataque": 130,
+                "escudo": 27
+            }
+        },
+        "level23": {
+            "guerreiro": {
+                "vida": 320,
+                "ataque": 91,
+                "escudo": 54
+            },
+            "mago": {
+                "vida": 251,
+                "ataque": 162,
+                "escudo": 29
+            },
+            "arqueiro": {
+                "vida": 283,
+                "ataque": 135,
+                "escudo": 28
+            }
+        },
+        "level24": {
+            "guerreiro": {
+                "vida": 330,
+                "ataque": 94,
+                "escudo": 56
+            },
+            "mago": {
+                "vida": 259,
+                "ataque": 168,
+                "escudo": 30
+            },
+            "arqueiro": {
+                "vida": 292,
+                "ataque": 140,
+                "escudo": 29
+            }
+        },
+        "level25": {
+            "guerreiro": {
+                "vida": 340,
+                "ataque": 97,
+                "escudo": 58
+            },
+            "mago": {
+                "vida": 267,
+                "ataque": 174,
+                "escudo": 31
+            },
+            "arqueiro": {
+                "vida": 301,
+                "ataque": 145,
+                "escudo": 30
+            }
+        },
+        "level26": {
+            "guerreiro": {
+                "vida": 350,
+                "ataque": 100,
+                "escudo": 60
+            },
+            "mago": {
+                "vida": 275,
+                "ataque": 180,
+                "escudo": 32
+            },
+            "arqueiro": {
+                "vida": 310,
+                "ataque": 150,
+                "escudo": 31
+            }
+        },
+        "level27": {
+            "guerreiro": {
+                "vida": 360,
+                "ataque": 103,
+                "escudo": 62
+            },
+            "mago": {
+                "vida": 283,
+                "ataque": 186,
+                "escudo": 33
+            },
+            "arqueiro": {
+                "vida": 319,
+                "ataque": 155,
+                "escudo": 32
+            }
+        },
+        "level28": {
+            "guerreiro": {
+                "vida": 370,
+                "ataque": 106,
+                "escudo": 64
+            },
+            "mago": {
+                "vida": 291,
+                "ataque": 192,
+                "escudo": 34
+            },
+            "arqueiro": {
+                "vida": 328,
+                "ataque": 160,
+                "escudo": 33
+            }
+        },
+        "level29": {
+            "guerreiro": {
+                "vida": 380,
+                "ataque": 109,
+                "escudo": 66
+            },
+            "mago": {
+                "vida": 299,
+                "ataque": 198,
+                "escudo": 35
+            },
+            "arqueiro": {
+                "vida": 337,
+                "ataque": 165,
+                "escudo": 34
+            }
+        },
+        "level30": {
+            "guerreiro": {
+                "vida": 390,
+                "ataque": 112,
+                "escudo": 68
+            },
+            "mago": {
+                "vida": 307,
+                "ataque": 204,
+                "escudo": 36
+            },
+            "arqueiro": {
+                "vida": 346,
+                "ataque": 170,
+                "escudo": 35
+            }
+        },
+        "level31": {
+            "guerreiro": {
+                "vida": 400,
+                "ataque": 115,
+                "escudo": 70
+            },
+            "mago": {
+                "vida": 315,
+                "ataque": 210,
+                "escudo": 37
+            },
+            "arqueiro": {
+                "vida": 355,
+                "ataque": 175,
+                "escudo": 36
+            }
+        },
+        "level32": {
+            "guerreiro": {
+                "vida": 410,
+                "ataque": 118,
+                "escudo": 72
+            },
+            "mago": {
+                "vida": 323,
+                "ataque": 216,
+                "escudo": 38
+            },
+            "arqueiro": {
+                "vida": 364,
+                "ataque": 180,
+                "escudo": 37
+            }
+        },
+        "level33": {
+            "guerreiro": {
+                "vida": 420,
+                "ataque": 121,
+                "escudo": 74
+            },
+            "mago": {
+                "vida": 331,
+                "ataque": 222,
+                "escudo": 39
+            },
+            "arqueiro": {
+                "vida": 373,
+                "ataque": 185,
+                "escudo": 38
+            }
+        },
+        "level34": {
+            "guerreiro": {
+                "vida": 430,
+                "ataque": 124,
+                "escudo": 76
+            },
+            "mago": {
+                "vida": 339,
+                "ataque": 228,
+                "escudo": 40
+            },
+            "arqueiro": {
+                "vida": 382,
+                "ataque": 190,
+                "escudo": 39
+            }
+        },
+        "level35": {
+            "guerreiro": {
+                "vida": 440,
+                "ataque": 127,
+                "escudo": 78
+            },
+            "mago": {
+                "vida": 347,
+                "ataque": 234,
+                "escudo": 41
+            },
+            "arqueiro": {
+                "vida": 391,
+                "ataque": 195,
+                "escudo": 40
+            }
+        },
+        "level36": {
+            "guerreiro": {
+                "vida": 450,
+                "ataque": 130,
+                "escudo": 80
+            },
+            "mago": {
+                "vida": 355,
+                "ataque": 240,
+                "escudo": 42
+            },
+            "arqueiro": {
+                "vida": 400,
+                "ataque": 200,
+                "escudo": 41
+            }
+        },
+        "level37": {
+            "guerreiro": {
+                "vida": 460,
+                "ataque": 133,
+                "escudo": 82
+            },
+            "mago": {
+                "vida": 363,
+                "ataque": 246,
+                "escudo": 43
+            },
+            "arqueiro": {
+                "vida": 409,
+                "ataque": 205,
+                "escudo": 42
+            }
+        },
+        "level38": {
+            "guerreiro": {
+                "vida": 470,
+                "ataque": 136,
+                "escudo": 84
+            },
+            "mago": {
+                "vida": 371,
+                "ataque": 252,
+                "escudo": 44
+            },
+            "arqueiro": {
+                "vida": 418,
+                "ataque": 210,
+                "escudo": 43
+            }
+        },
+        "level39": {
+            "guerreiro": {
+                "vida": 480,
+                "ataque": 139,
+                "escudo": 86
+            },
+            "mago": {
+                "vida": 379,
+                "ataque": 258,
+                "escudo": 45
+            },
+            "arqueiro": {
+                "vida": 427,
+                "ataque": 215,
+                "escudo": 44
+            }
+        },
+        "level40": {
+            "guerreiro": {
+                "vida": 490,
+                "ataque": 142,
+                "escudo": 88
+            },
+            "mago": {
+                "vida": 387,
+                "ataque": 264,
+                "escudo": 46
+            },
+            "arqueiro": {
+                "vida": 436,
+                "ataque": 220,
+                "escudo": 45
+            }
+        },
+        "level41": {
+            "guerreiro": {
+                "vida": 500,
+                "ataque": 145,
+                "escudo": 90
+            },
+            "mago": {
+                "vida": 395,
+                "ataque": 270,
+                "escudo": 47
+            },
+            "arqueiro": {
+                "vida": 445,
+                "ataque": 225,
+                "escudo": 46
+            }
+        },
+        "level42": {
+            "guerreiro": {
+                "vida": 510,
+                "ataque": 148,
+                "escudo": 92
+            },
+            "mago": {
+                "vida": 403,
+                "ataque": 276,
+                "escudo": 48
+            },
+            "arqueiro": {
+                "vida": 454,
+                "ataque": 230,
+                "escudo": 47
+            }
+        },
+        "level43": {
+            "guerreiro": {
+                "vida": 520,
+                "ataque": 151,
+                "escudo": 94
+            },
+            "mago": {
+                "vida": 411,
+                "ataque": 282,
+                "escudo": 49
+            },
+            "arqueiro": {
+                "vida": 463,
+                "ataque": 235,
+                "escudo": 48
+            }
+        },
+        "level44": {
+            "guerreiro": {
+                "vida": 530,
+                "ataque": 154,
+                "escudo": 96
+            },
+            "mago": {
+                "vida": 419,
+                "ataque": 288,
+                "escudo": 50
+            },
+            "arqueiro": {
+                "vida": 472,
+                "ataque": 240,
+                "escudo": 49
+            }
+        },
+        "level45": {
+            "guerreiro": {
+                "vida": 540,
+                "ataque": 157,
+                "escudo": 98
+            },
+            "mago": {
+                "vida": 427,
+                "ataque": 294,
+                "escudo": 51
+            },
+            "arqueiro": {
+                "vida": 481,
+                "ataque": 245,
+                "escudo": 50
+            }
+        },
+        "level46": {
+            "guerreiro": {
+                "vida": 550,
+                "ataque": 160,
+                "escudo": 100
+            },
+            "mago": {
+                "vida": 435,
+                "ataque": 300,
+                "escudo": 52
+            },
+            "arqueiro": {
+                "vida": 490,
+                "ataque": 250,
+                "escudo": 51
+            }
+        },
+        "level47": {
+            "guerreiro": {
+                "vida": 560,
+                "ataque": 163,
+                "escudo": 102
+            },
+            "mago": {
+                "vida": 443,
+                "ataque": 306,
+                "escudo": 53
+            },
+            "arqueiro": {
+                "vida": 499,
+                "ataque": 255,
+                "escudo": 52
+            }
+        },
+        "level48": {
+            "guerreiro": {
+                "vida": 570,
+                "ataque": 166,
+                "escudo": 104
+            },
+            "mago": {
+                "vida": 451,
+                "ataque": 312,
+                "escudo": 54
+            },
+            "arqueiro": {
+                "vida": 508,
+                "ataque": 260,
+                "escudo": 53
+            }
+        },
+        "level49": {
+            "guerreiro": {
+                "vida": 580,
+                "ataque": 169,
+                "escudo": 106
+            },
+            "mago": {
+                "vida": 459,
+                "ataque": 318,
+                "escudo": 55
+            },
+            "arqueiro": {
+                "vida": 517,
+                "ataque": 265,
+                "escudo": 54
+            }
+        },
+        "level50": {
+            "guerreiro": {
+                "vida": 590,
+                "ataque": 172,
+                "escudo": 108
+            },
+            "mago": {
+                "vida": 467,
+                "ataque": 324,
+                "escudo": 56
+            },
+            "arqueiro": {
+                "vida": 526,
+                "ataque": 270,
+                "escudo": 55
+            }
         }
-    },
-    "level2" : {
-        "guerreiro" : {
-            "vida" : 105,
-            "ataque" : 21,
-            "escudo" : 11
-        },
-        "mago" : {
-            "vida" : 79,
-            "ataque" : 32,
-            "escudo" : 7
-        },
-        "arqueiro" : {
-            "vida" : 89,
-            "ataque" : 26,
-            "escudo" : 6
-        }
-    },
-    "level3" : {
-        "guerreiro" : {
-            "vida" : 110,
-            "ataque" : 22,
-            "escudo" : 11
-        },
-        "mago" : {
-            "vida" : 83,
-            "ataque" : 33,
-            "escudo" : 8
-        },
-        "arqueiro" : {
-            "vida" : 94,
-            "ataque" : 28,
-            "escudo" : 7
-        }
-    },
-    "level4" : {
-        "guerreiro" : {
-            "vida" : 116,
-            "ataque" : 23,
-            "escudo" : 12
-        },
-        "mago" : {
-            "vida" : 87,
-            "ataque" : 35,
-            "escudo" : 8
-        },
-        "arqueiro" : {
-            "vida" : 98,
-            "ataque" : 29,
-            "escudo" : 7
-        }
-    },
-    "level5" : {
-        "guerreiro" : {
-            "vida" : 122,
-            "ataque" : 24,
-            "escudo" : 12
-        },
-        "mago" : {
-            "vida" : 91,
-            "ataque" : 36,
-            "escudo" : 9
-        },
-        "arqueiro" : {
-            "vida" : 103,
-            "ataque" : 30,
-            "escudo" : 7
-        }
-    },
-    "level6" : {
-        "guerreiro" : {
-            "vida" : 128,
-            "ataque" : 26,
-            "escudo" : 13
-        },
-        "mago" : {
-            "vida" : 96,
-            "ataque" : 38,
-            "escudo" : 9
-        },
-        "arqueiro" : {
-            "vida" : 108,
-            "ataque" : 32,
-            "escudo" : 8
-        }
-    },
-    "level7" : {
-        "guerreiro" : {
-            "vida" : 134,
-            "ataque" : 27,
-            "escudo" : 13
-        },
-        "mago" : {
-            "vida" : 101,
-            "ataque" : 40,
-            "escudo" : 9
-        },
-        "arqueiro" : {
-            "vida" : 114,
-            "ataque" : 34,
-            "escudo" : 8
-        }
-    },
-    "level8" : {
-        "guerreiro" : {
-            "vida" : 141,
-            "ataque" : 28,
-            "escudo" : 14
-        },
-        "mago" : {
-            "vida" : 106,
-            "ataque" : 42,
-            "escudo" : 10
-        },
-        "arqueiro" : {
-            "vida" : 120,
-            "ataque" : 35,
-            "escudo" : 8
-        }
-    },
-    "level9" : {
-        "guerreiro" : {
-            "vida" : 148,
-            "ataque" : 30,
-            "escudo" : 15
-        },
-        "mago" : {
-            "vida" : 111,
-            "ataque" : 44,
-            "escudo" : 10
-        },
-        "arqueiro" : {
-            "vida" : 126,
-            "ataque" : 37,
-            "escudo" : 9
-        }
-    },
-    "level10" : {
-        "guerreiro" : {
-            "vida" : 155,
-            "ataque" : 31,
-            "escudo" : 16
-        },
-        "mago" : {
-            "vida" : 116,
-            "ataque" : 47,
-            "escudo" : 11
-        },
-        "arqueiro" : {
-            "vida" : 132,
-            "ataque" : 39,
-            "escudo" : 19
-        }
-    },
-    "level11" : {
-        "guerreiro" : {
-            "vida" : 163,
-            "ataque" : 33,
-            "escudo" : 16
-        },
-        "mago" : {
-            "vida" : 122,
-            "ataque" : 49,
-            "escudo" : 11
-        },
-        "arqueiro" : {
-            "vida" : 138,
-            "ataque" : 41,
-            "escudo" : 10
-        }
-    },
-    "level12" : {
-        "guerreiro" : {
-            "vida" : 171,
-            "ataque" : 34,
-            "escudo" : 17
-        },
-        "mago" : {
-            "vida" : 128,
-            "ataque" : 51,
-            "escudo" : 12
-        },
-        "arqueiro" : {
-            "vida" : 145,
-            "ataque" : 43,
-            "escudo" : 10
-        }
-    },
-    "level13" : {
-        "guerreiro" : {
-            "vida" : 180,
-            "ataque" : 36,
-            "escudo" : 18
-        },
-        "mago" : {
-            "vida" : 135,
-            "ataque" : 54,
-            "escudo" : 13
-        },
-        "arqueiro" : {
-            "vida" : 153,
-            "ataque" : 45,
-            "escudo" : 11
-        }
-    },
-    "level14" : {
-        "guerreiro" : {
-            "vida" : 189,
-            "ataque" : 38,
-            "escudo" : 19
-        },
-        "mago" : {
-            "vida" : 141,
-            "ataque" : 57,
-            "escudo" : 13
-        },
-        "arqueiro" : {
-            "vida" : 160,
-            "ataque" : 47,
-            "escudo" : 11
-        }
-    },
-    "level15" : {
-        "guerreiro" : {
-            "vida" : 198,
-            "ataque" : 40,
-            "escudo" : 20
-        },
-        "mago" : {
-            "vida" : 148,
-            "ataque" : 59,
-            "escudo" : 14
-        },
-        "arqueiro" : {
-            "vida" : 168,
-            "ataque" : 49,
-            "escudo" : 12
-        }
-    },
-    "level16" : {
-        "guerreiro" : {
-            "vida" : 208,
-            "ataque" : 42,
-            "escudo" : 21
-        },
-        "mago" : {
-            "vida" : 156,
-            "ataque" : 62,
-            "escudo" : 15
-        },
-        "arqueiro" : {
-            "vida" : 177,
-            "ataque" : 52,
-            "escudo" : 12
-        }
-    },
-    "level17" : {
-        "guerreiro" : {
-            "vida" : 218,
-            "ataque" : 44,
-            "escudo" : 22
-        },
-        "mago" : {
-            "vida" : 164,
-            "ataque" : 65,
-            "escudo" : 15
-        },
-        "arqueiro" : {
-            "vida" : 186,
-            "ataque" : 55,
-            "escudo" : 13
-        }
-    },
-    "level18" : {
-        "guerreiro" : {
-            "vida" : 229,
-            "ataque" : 46,
-            "escudo" : 23
-        },
-        "mago" : {
-            "vida" : 172,
-            "ataque" : 69,
-            "escudo" : 16
-        },
-        "arqueiro" : {
-            "vida" : 195,
-            "ataque" : 57,
-            "escudo" : 14
-        }
-    },
-    "level19" : {
-        "guerreiro" : {
-            "vida" : 241,
-            "ataque" : 48,
-            "escudo" : 24
-        },
-        "mago" : {
-            "vida" : 180,
-            "ataque" : 72,
-            "escudo" : 17
-        },
-        "arqueiro" : {
-            "vida" : 205,
-            "ataque" : 60,
-            "escudo" : 14
-        }
-    },
-    "level20" : {
-        "guerreiro" : {
-            "vida" : 253,
-            "ataque" : 51,
-            "escudo" : 25
-        },
-        "mago" : {
-            "vida" : 190,
-            "ataque" : 76,
-            "escudo" : 18
-        },
-        "arqueiro" : {
-            "vida" : 215,
-            "ataque" : 63,
-            "escudo" : 15}}
     },
     "xp": {
-        "level1" : 0,
-        "level2" : 100,
-        "level3" : 200,
-        "level4" : 300,
-        "level5" : 600,
-        "level6" : 800,
-        "level7" : 1000,
-        "level8" : 1350,
-        "level9" : 1700,
-        "level10" : 2500,
-        "level11" : 3000,
-        "level12" : 3600,
-        "level13" : 4200,
-        "level14" : 4900,
-        "level15" : 5500,
-        "level16" : 6200,
-        "level17" : 7000,
-        "level18" : 7800,
-        "level19" : 8700,
-        "level20" : 10000
+        "level1": 0,
+        "level2": 100,
+        "level3": 200,
+        "level4": 300,
+        "level5": 550,
+        "level6": 800,
+        "level7": 1050,
+        "level8": 1450,
+        "level9": 1850,
+        "level10": 2250,
+        "level11": 2800,
+        "level12": 3350,
+        "level13": 3900,
+        "level14": 4600,
+        "level15": 5300,
+        "level16": 6000,
+        "level17": 6850,
+        "level18": 7700,
+        "level19": 8550,
+        "level20": 9550,
+        "level21": 10550,
+        "level22": 11550,
+        "level23": 12700,
+        "level24": 13850,
+        "level25": 15000,
+        "level26": 16300,
+        "level27": 17600,
+        "level28": 18900,
+        "level29": 20350,
+        "level30": 21800,
+        "level31": 23250,
+        "level32": 24850,
+        "level33": 26450,
+        "level34": 28050,
+        "level35": 29800,
+        "level36": 31550,
+        "level37": 33300,
+        "level38": 35200,
+        "level39": 37100,
+        "level40": 39000,
+        "level41": 41050,
+        "level42": 43100,
+        "level43": 45150,
+        "level44": 47350,
+        "level45": 49550,
+        "level46": 51750,
+        "level47": 54100,
+        "level48": 56450,
+        "level49": 58800,
+        "level50": 61300
     }
 }
