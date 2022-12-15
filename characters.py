@@ -28,7 +28,7 @@ class Character(ABC):
 
 class MainCharacter(Character):
 
-    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 1, xp: int = 0, gold: int = 0, dungeon: int = 1, floor: int = 1, deaths: int = 0, life_increase: float = 0, damage_increase: float = 0, shield_increase: float = 0, gold_increase: float = 0, xp_increase: float = 0, dodge: float = 0) -> None:
+    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 1, xp: int = 0, gold: int = 0, dungeon: int = 1, floor: int = 1, deaths: int = 0, life_increase: float = 0, damage_increase: float = 0, shield_increase: float = 0, gold_increase: float = 0, xp_increase: float = 0, dodge: float = 0, critical_chance: float = False, critical_damage: float = False) -> None:
         
         super().__init__(name, life, damage, shield, level, xp, gold)
         self.user_class = user_class
@@ -41,6 +41,8 @@ class MainCharacter(Character):
         self.gold_increase = gold_increase
         self.xp_increase = xp_increase
         self.dodge = dodge
+        self.critical_chance = critical_chance
+        self.critical_damage = critical_damage
 
         with open('stats.json', 'r') as file:
             
@@ -86,18 +88,25 @@ class MainCharacter(Character):
         print(f'''| Classe: {self.user_class.title()}
 | Level: \033[1;34m{self.level}\033[m
 | Xp: \033[1;36m{self.xp}\033[m
-| Gold: \033[1;33m{self.gold}\033[m
+| Gold: \033[1;33m{self.gold}\033[m G
 |
 | Vida: \033[1;32m{self.life}\033[m
 | Ataque: \033[1;36m{self.damage}\033[m
 | Escudo: \033[1;33m{self.shield}\033[m
 |
-| Aumento de Vida: \033[1;32m{int(self.life_increase * 100)}\033[m%
-| Aumento de Ataque: \033[1;36m{int(self.damage_increase * 100)}\033[m%
-| Aumento de Escudo: \033[1;33m{int(self.shield_increase * 100)}\033[m%
+| Aumento de Vida: \033[1;32m{int(self.life_increase * 100)}\033[m %
+| Aumento de Ataque: \033[1;36m{int(self.damage_increase * 100)}\033[m %
+| Aumento de Escudo: \033[1;33m{int(self.shield_increase * 100)}\033[m %
+|
+| Aumento de Xp: \033[1;36m{int(self.xp_increase * 100)}\033[m %
+| Aumento de Gold: \033[1;33m{int(self.gold_increase * 100)}\033[m %
+|
+| Chance de Desviar: \033[1;33m{self.dodge}\033[m %
+| Chance de Crítico: \033[1;31m{self.critical_chance}\033[m %
+| Dano Crítico: \033[1;31m{100 + int(self.critical_damage * 100)}\033[m %
 |
 | Dungeon {self.dungeon}
-| Floor {self.floor}
+| Andar {self.floor}
 ''')
 
     def level_up(self) -> None:
@@ -272,8 +281,16 @@ class Monster(Character):
 
         monster_level = f'level{self.level}'
 
-        self.life = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['vida']
-        self.damage = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['ataque']
-        self.shield = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['escudo']
-        self.xp = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['xp']
-        self.gold = self.stats["monstros"][f"{self.name.lower()}"][f"{monster_level}"]['gold']
+        self.life = self.stats["monstros"][f"{monster_level}"][f"{self.name.lower()}"]['vida']
+        self.damage = self.stats["monstros"][f"{monster_level}"][f"{self.name.lower()}"]['ataque']
+        self.shield = self.stats["monstros"][f"{monster_level}"][f"{self.name.lower()}"]['escudo']
+        self.xp = self.stats["monstros"][f"{monster_level}"][f"{self.name.lower()}"]['xp']
+        self.gold = self.stats["monstros"][f"{monster_level}"][f"{self.name.lower()}"]['gold']
+
+        if self.boss:
+
+            self.damage *= 3
+            self.life *= 3
+            self.shield *= 3
+            self.xp *= 5
+            self.gold *= 5
