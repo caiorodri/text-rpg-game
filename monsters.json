@@ -1,291 +1,603 @@
 {
-    "monstros" : {
-        "slime" : {
-            "level1" : {
-                "vida" : 20,
-                "ataque" : 15,
-                "escudo" : 1,
-                "xp" : 10,
-                "gold" : 15
+    "monstros": {
+        "level1": {
+            "slime": {
+                "vida": 20,
+                "ataque": 15,
+                "escudo": 1,
+                "xp": 10,
+                "gold": 15
             },
-            "level2" : {
-                "vida" : 27,
-                "ataque" : 20,
-                "escudo" : 2,
-                "xp" : 15,
-                "gold" : 20
+            "goblin": {
+                "vida": 90,
+                "ataque": 50,
+                "escudo": 10,
+                "xp": 50,
+                "gold": 55
             },
-            "level3" : {
-                "vida" : 34,
-                "ataque" : 25,
-                "escudo" : 3,
-                "xp" : 20,
-                "gold" : 25
+            "esqueleto": {
+                "vida": 140,
+                "ataque": 100,
+                "escudo": 20,
+                "xp": 110,
+                "gold": 110
             },
-            "level4" : {
-                "vida" : 42,
-                "ataque" : 30,
-                "escudo" : 5,
-                "xp" : 30,
-                "gold" : 30
-            },
-            "level5" : {
-                "vida" : 50,
-                "ataque" : 35,
-                "escudo" : 7,
-                "xp" : 35,
-                "gold" : 35
-            },
-            "level6" : {
-                "vida" : 58,
-                "ataque" : 40,
-                "escudo" : 9,
-                "xp" : 40,
-                "gold" : 40
-            },
-            "level7" : {
-                "vida" : 66,
-                "ataque" : 45,
-                "escudo" : 11,
-                "xp" : 45,
-                "gold" : 45
-            },
-            "level8" : {
-                "vida" : 74,
-                "ataque" : 50,
-                "escudo" : 13,
-                "xp" : 50,
-                "gold" : 50
-            },
-            "level9" : {
-                "vida" : 82,
-                "ataque" : 55,
-                "escudo" : 15,
-                "xp" : 55,
-                "gold" : 55
-            },
-            "level10" : {
-                "vida" : 90,
-                "ataque" : 60,
-                "escudo" : 18,
-                "xp" : 60,
-                "gold" : 60
+            "orc": {
+                "vida": 200,
+                "ataque": 180,
+                "escudo": 40,
+                "xp": 180,
+                "gold": 200
             }
         },
-        "goblin" : {
-            "level1" : {
-                "vida" : 40,
-                "ataque" : 14,
-                "escudo" : 2,
-                "xp" : 16,
-                "gold" : 25
+        "level2": {
+            "slime": {
+                "vida": 29,
+                "ataque": 20,
+                "escudo": 2,
+                "xp": 15,
+                "gold": 20
             },
-            "level2" : {
-                "vida" : 45,
-                "ataque" : 20,
-                "escudo" : 3,
-                "xp" : 22,
-                "gold" : 32
+            "goblin": {
+                "vida": 97,
+                "ataque": 57,
+                "escudo": 11,
+                "xp": 57,
+                "gold": 65
             },
-            "level3" : {
-                "vida" : 50,
-                "ataque" : 26,
-                "escudo" : 4,
-                "xp" : 28,
-                "gold" : 39
+            "esqueleto": {
+                "vida": 144,
+                "ataque": 109,
+                "escudo": 22,
+                "xp": 118,
+                "gold": 118
             },
-            "level4" : {
-                "vida" : 55,
-                "ataque" : 32,
-                "escudo" : 7,
-                "xp" : 34,
-                "gold" : 46
-            },
-            "level5" : {
-                "vida" : 65,
-                "ataque" : 40,
-                "escudo" : 10,
-                "xp" : 42,
-                "gold" : 53
-            },
-            "level6" : {
-                "vida" : 70,
-                "ataque" : 48,
-                "escudo" : 13,
-                "xp" : 49,
-                "gold" : 60
-            },
-            "level7" : {
-                "vida" : 75,
-                "ataque" : 56,
-                "escudo" : 16,
-                "xp" : 56,
-                "gold" : 67
-            },
-            "level8" : {
-                "vida" : 80,
-                "ataque" : 64,
-                "escudo" : 19,
-                "xp" : 63,
-                "gold" : 74
-            },
-            "level9" : {
-                "vida" : 85,
-                "ataque" : 72,
-                "escudo" : 22,
-                "xp" : 70,
-                "gold" : 81
-            },
-            "level10" : {
-                "vida" : 90,
-                "ataque" : 80,
-                "escudo" : 25,
-                "xp" : 77,
-                "gold" : 88
+            "orc": {
+                "vida": 207,
+                "ataque": 185,
+                "escudo": 43,
+                "xp": 190,
+                "gold": 215
             }
         },
-        "esqueleto" : {
-            "level1" : {
-                "vida" : 35,
-                "ataque" : 20,
-                "escudo" : 3,
-                "xp" : 20,
-                "gold" : 30
+        "level3": {
+            "slime": {
+                "vida": 38,
+                "ataque": 25,
+                "escudo": 3,
+                "xp": 20,
+                "gold": 25
             },
-            "level2" : {
-                "vida" : 40,
-                "ataque" : 27,
-                "escudo" : 4,
-                "xp" : 28,
-                "gold" : 35
+            "goblin": {
+                "vida": 104,
+                "ataque": 64,
+                "escudo": 12,
+                "xp": 64,
+                "gold": 75
             },
-            "level3" : {
-                "vida" : 45,
-                "ataque" : 34,
-                "escudo" : 5,
-                "xp" : 36,
-                "gold" : 40
+            "esqueleto": {
+                "vida": 148,
+                "ataque": 118,
+                "escudo": 24,
+                "xp": 126,
+                "gold": 126
             },
-            "level4" : {
-                "vida" : 50,
-                "ataque" : 41,
-                "escudo" : 7,
-                "xp" : 44,
-                "gold" : 45
-            },
-            "level5" : {
-                "vida" : 55,
-                "ataque" : 48,
-                "escudo" : 10,
-                "xp" : 52,
-                "gold" : 50
-            },
-            "level6" : {
-                "vida" : 61,
-                "ataque" : 57,
-                "escudo" : 13,
-                "xp" : 60,
-                "gold" : 55
-            },
-            "level7" : {
-                "vida" : 67,
-                "ataque" : 66,
-                "escudo" : 16,
-                "xp" : 68,
-                "gold" : 60
-            },
-            "level8" : {
-                "vida" : 73,
-                "ataque" : 75,
-                "escudo" : 19,
-                "xp" : 76,
-                "gold" : 65
-            },
-            "level9" : {
-                "vida" : 79,
-                "ataque" : 84,
-                "escudo" : 22,
-                "xp" : 84,
-                "gold" : 70
-            },
-            "level10" : {
-                "vida" : 85,
-                "ataque" : 93,
-                "escudo" : 25,
-                "xp" : 92,
-                "gold" : 75
+            "orc": {
+                "vida": 214,
+                "ataque": 190,
+                "escudo": 46,
+                "xp": 200,
+                "gold": 230
             }
         },
-        "orc" : {
-            "level1" : {
-                "vida" : 50,
-                "ataque" : 20,
-                "escudo" : 12,
-                "xp" : 35,
-                "gold" : 30
+        "level4": {
+            "slime": {
+                "vida": 47,
+                "ataque": 30,
+                "escudo": 4,
+                "xp": 25,
+                "gold": 30
             },
-            "level2" : {
-                "vida" : 60,
-                "ataque" : 25,
-                "escudo" : 15,
-                "xp" : 43,
-                "gold" : 40
+            "goblin": {
+                "vida": 111,
+                "ataque": 71,
+                "escudo": 13,
+                "xp": 71,
+                "gold": 85
             },
-            "level3" : {
-                "vida" : 70,
-                "ataque" : 30,
-                "escudo" : 18,
-                "xp" : 51,
-                "gold" : 50
+            "esqueleto": {
+                "vida": 152,
+                "ataque": 127,
+                "escudo": 26,
+                "xp": 134,
+                "gold": 134
             },
-            "level4" : {
-                "vida" : 80,
-                "ataque" : 35,
-                "escudo" : 21,
-                "xp" : 59,
-                "gold" : 60
+            "orc": {
+                "vida": 221,
+                "ataque": 195,
+                "escudo": 49,
+                "xp": 210,
+                "gold": 245
+            }
+        },
+        "level5": {
+            "slime": {
+                "vida": 56,
+                "ataque": 35,
+                "escudo": 5,
+                "xp": 30,
+                "gold": 35
             },
-            "level5" : {
-                "vida" : 90,
-                "ataque" : 40,
-                "escudo" : 24,
-                "xp" : 67,
-                "gold" : 70
+            "goblin": {
+                "vida": 118,
+                "ataque": 78,
+                "escudo": 14,
+                "xp": 78,
+                "gold": 95
             },
-            "level6" : {
-                "vida" : 100,
-                "ataque" : 45,
-                "escudo" : 27,
-                "xp" : 75,
-                "gold" : 80
+            "esqueleto": {
+                "vida": 156,
+                "ataque": 136,
+                "escudo": 28,
+                "xp": 142,
+                "gold": 142
             },
-            "level7" : {
-                "vida" : 110,
-                "ataque" : 50,
-                "escudo" : 30,
-                "xp" : 83,
-                "gold" : 90
+            "orc": {
+                "vida": 228,
+                "ataque": 200,
+                "escudo": 52,
+                "xp": 220,
+                "gold": 260
+            }
+        },
+        "level6": {
+            "slime": {
+                "vida": 65,
+                "ataque": 40,
+                "escudo": 6,
+                "xp": 35,
+                "gold": 40
             },
-            "level8" : {
-                "vida" : 120,
-                "ataque" : 55,
-                "escudo" : 33,
-                "xp" : 91,
-                "gold" : 100
+            "goblin": {
+                "vida": 125,
+                "ataque": 85,
+                "escudo": 15,
+                "xp": 85,
+                "gold": 105
             },
-            "level9" : {
-                "vida" : 130,
-                "ataque" : 60,
-                "escudo" : 36,
-                "xp" : 99,
-                "gold" : 110
+            "esqueleto": {
+                "vida": 160,
+                "ataque": 145,
+                "escudo": 30,
+                "xp": 150,
+                "gold": 150
             },
-            "level10" : {
-                "vida" : 140,
-                "ataque" : 65,
-                "escudo" : 40,
-                "xp" : 107,
-                "gold" : 120
+            "orc": {
+                "vida": 235,
+                "ataque": 205,
+                "escudo": 55,
+                "xp": 230,
+                "gold": 275
+            }
+        },
+        "level7": {
+            "slime": {
+                "vida": 74,
+                "ataque": 45,
+                "escudo": 7,
+                "xp": 40,
+                "gold": 45
+            },
+            "goblin": {
+                "vida": 132,
+                "ataque": 92,
+                "escudo": 16,
+                "xp": 92,
+                "gold": 115
+            },
+            "esqueleto": {
+                "vida": 164,
+                "ataque": 154,
+                "escudo": 32,
+                "xp": 158,
+                "gold": 158
+            },
+            "orc": {
+                "vida": 242,
+                "ataque": 210,
+                "escudo": 58,
+                "xp": 240,
+                "gold": 290
+            }
+        },
+        "level8": {
+            "slime": {
+                "vida": 83,
+                "ataque": 50,
+                "escudo": 8,
+                "xp": 45,
+                "gold": 50
+            },
+            "goblin": {
+                "vida": 139,
+                "ataque": 99,
+                "escudo": 17,
+                "xp": 99,
+                "gold": 125
+            },
+            "esqueleto": {
+                "vida": 168,
+                "ataque": 163,
+                "escudo": 34,
+                "xp": 166,
+                "gold": 166
+            },
+            "orc": {
+                "vida": 249,
+                "ataque": 215,
+                "escudo": 61,
+                "xp": 250,
+                "gold": 305
+            }
+        },
+        "level9": {
+            "slime": {
+                "vida": 92,
+                "ataque": 55,
+                "escudo": 9,
+                "xp": 50,
+                "gold": 55
+            },
+            "goblin": {
+                "vida": 146,
+                "ataque": 106,
+                "escudo": 18,
+                "xp": 106,
+                "gold": 135
+            },
+            "esqueleto": {
+                "vida": 172,
+                "ataque": 172,
+                "escudo": 36,
+                "xp": 174,
+                "gold": 174
+            },
+            "orc": {
+                "vida": 256,
+                "ataque": 220,
+                "escudo": 64,
+                "xp": 260,
+                "gold": 320
+            }
+        },
+        "level10": {
+            "slime": {
+                "vida": 101,
+                "ataque": 60,
+                "escudo": 10,
+                "xp": 55,
+                "gold": 60
+            },
+            "goblin": {
+                "vida": 153,
+                "ataque": 113,
+                "escudo": 19,
+                "xp": 113,
+                "gold": 145
+            },
+            "esqueleto": {
+                "vida": 176,
+                "ataque": 181,
+                "escudo": 38,
+                "xp": 182,
+                "gold": 182
+            },
+            "orc": {
+                "vida": 263,
+                "ataque": 225,
+                "escudo": 67,
+                "xp": 270,
+                "gold": 335
+            }
+        },
+        "level11": {
+            "slime": {
+                "vida": 110,
+                "ataque": 65,
+                "escudo": 11,
+                "xp": 60,
+                "gold": 65
+            },
+            "goblin": {
+                "vida": 160,
+                "ataque": 120,
+                "escudo": 20,
+                "xp": 120,
+                "gold": 155
+            },
+            "esqueleto": {
+                "vida": 180,
+                "ataque": 190,
+                "escudo": 40,
+                "xp": 190,
+                "gold": 190
+            },
+            "orc": {
+                "vida": 270,
+                "ataque": 230,
+                "escudo": 70,
+                "xp": 280,
+                "gold": 350
+            }
+        },
+        "level12": {
+            "slime": {
+                "vida": 119,
+                "ataque": 70,
+                "escudo": 12,
+                "xp": 65,
+                "gold": 70
+            },
+            "goblin": {
+                "vida": 167,
+                "ataque": 127,
+                "escudo": 21,
+                "xp": 127,
+                "gold": 165
+            },
+            "esqueleto": {
+                "vida": 184,
+                "ataque": 199,
+                "escudo": 42,
+                "xp": 198,
+                "gold": 198
+            },
+            "orc": {
+                "vida": 277,
+                "ataque": 235,
+                "escudo": 73,
+                "xp": 290,
+                "gold": 365
+            }
+        },
+        "level13": {
+            "slime": {
+                "vida": 128,
+                "ataque": 75,
+                "escudo": 13,
+                "xp": 70,
+                "gold": 75
+            },
+            "goblin": {
+                "vida": 174,
+                "ataque": 134,
+                "escudo": 22,
+                "xp": 134,
+                "gold": 175
+            },
+            "esqueleto": {
+                "vida": 188,
+                "ataque": 208,
+                "escudo": 44,
+                "xp": 206,
+                "gold": 206
+            },
+            "orc": {
+                "vida": 284,
+                "ataque": 240,
+                "escudo": 76,
+                "xp": 300,
+                "gold": 380
+            }
+        },
+        "level14": {
+            "slime": {
+                "vida": 137,
+                "ataque": 80,
+                "escudo": 14,
+                "xp": 75,
+                "gold": 80
+            },
+            "goblin": {
+                "vida": 181,
+                "ataque": 141,
+                "escudo": 23,
+                "xp": 141,
+                "gold": 185
+            },
+            "esqueleto": {
+                "vida": 192,
+                "ataque": 217,
+                "escudo": 46,
+                "xp": 214,
+                "gold": 214
+            },
+            "orc": {
+                "vida": 291,
+                "ataque": 245,
+                "escudo": 79,
+                "xp": 310,
+                "gold": 395
+            }
+        },
+        "level15": {
+            "slime": {
+                "vida": 146,
+                "ataque": 85,
+                "escudo": 15,
+                "xp": 80,
+                "gold": 85
+            },
+            "goblin": {
+                "vida": 188,
+                "ataque": 148,
+                "escudo": 24,
+                "xp": 148,
+                "gold": 195
+            },
+            "esqueleto": {
+                "vida": 196,
+                "ataque": 226,
+                "escudo": 48,
+                "xp": 222,
+                "gold": 222
+            },
+            "orc": {
+                "vida": 298,
+                "ataque": 250,
+                "escudo": 82,
+                "xp": 320,
+                "gold": 410
+            }
+        },
+        "level16": {
+            "slime": {
+                "vida": 155,
+                "ataque": 90,
+                "escudo": 16,
+                "xp": 85,
+                "gold": 90
+            },
+            "goblin": {
+                "vida": 195,
+                "ataque": 155,
+                "escudo": 25,
+                "xp": 155,
+                "gold": 205
+            },
+            "esqueleto": {
+                "vida": 200,
+                "ataque": 235,
+                "escudo": 50,
+                "xp": 230,
+                "gold": 230
+            },
+            "orc": {
+                "vida": 305,
+                "ataque": 255,
+                "escudo": 85,
+                "xp": 330,
+                "gold": 425
+            }
+        },
+        "level17": {
+            "slime": {
+                "vida": 164,
+                "ataque": 95,
+                "escudo": 17,
+                "xp": 90,
+                "gold": 95
+            },
+            "goblin": {
+                "vida": 202,
+                "ataque": 162,
+                "escudo": 26,
+                "xp": 162,
+                "gold": 215
+            },
+            "esqueleto": {
+                "vida": 204,
+                "ataque": 244,
+                "escudo": 52,
+                "xp": 238,
+                "gold": 238
+            },
+            "orc": {
+                "vida": 312,
+                "ataque": 260,
+                "escudo": 88,
+                "xp": 340,
+                "gold": 440
+            }
+        },
+        "level18": {
+            "slime": {
+                "vida": 173,
+                "ataque": 100,
+                "escudo": 18,
+                "xp": 95,
+                "gold": 100
+            },
+            "goblin": {
+                "vida": 209,
+                "ataque": 169,
+                "escudo": 27,
+                "xp": 169,
+                "gold": 225
+            },
+            "esqueleto": {
+                "vida": 208,
+                "ataque": 253,
+                "escudo": 54,
+                "xp": 246,
+                "gold": 246
+            },
+            "orc": {
+                "vida": 319,
+                "ataque": 265,
+                "escudo": 91,
+                "xp": 350,
+                "gold": 455
+            }
+        },
+        "level19": {
+            "slime": {
+                "vida": 182,
+                "ataque": 105,
+                "escudo": 19,
+                "xp": 100,
+                "gold": 105
+            },
+            "goblin": {
+                "vida": 216,
+                "ataque": 176,
+                "escudo": 28,
+                "xp": 176,
+                "gold": 235
+            },
+            "esqueleto": {
+                "vida": 212,
+                "ataque": 262,
+                "escudo": 56,
+                "xp": 254,
+                "gold": 254
+            },
+            "orc": {
+                "vida": 326,
+                "ataque": 270,
+                "escudo": 94,
+                "xp": 360,
+                "gold": 470
+            }
+        },
+        "level20": {
+            "slime": {
+                "vida": 191,
+                "ataque": 110,
+                "escudo": 20,
+                "xp": 105,
+                "gold": 110
+            },
+            "goblin": {
+                "vida": 223,
+                "ataque": 183,
+                "escudo": 29,
+                "xp": 183,
+                "gold": 245
+            },
+            "esqueleto": {
+                "vida": 216,
+                "ataque": 271,
+                "escudo": 58,
+                "xp": 262,
+                "gold": 262
+            },
+            "orc": {
+                "vida": 333,
+                "ataque": 275,
+                "escudo": 97,
+                "xp": 370,
+                "gold": 485
             }
         }
     }
