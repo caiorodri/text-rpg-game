@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import sqlite3
+import mysql.connector
 from utils import animated_text, clean, text_decorator
 import json
 
@@ -143,7 +143,7 @@ class MainCharacter(Character):
 
     def update_stats(self):
 
-        connection = sqlite3.connect('user.db')
+        connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
         cursor = connection.cursor()
 
         cursor.execute(f"UPDATE users SET user_level = '{self.level}', user_class = '{self.user_class}', user_xp = '{self.xp}', user_gold = '{self.gold}', user_dungeon = '{self.dungeon}', user_floor = '{self.floor}', deaths = '{self.deaths}', user_floor = '{self.floor}', gold_increase = '{self.gold_increase}', xp_increase = '{self.xp_increase}', dodge = '{self.dodge}' WHERE username = '{self.name}'")
@@ -154,7 +154,7 @@ class MainCharacter(Character):
 
     def update_deaths(self):
 
-        connection = sqlite3.connect('user.db')
+        connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
         cursor = connection.cursor()
 
         cursor.execute(f"UPDATE users SET deaths = '{self.deaths}' WHERE username = '{self.name}'")
