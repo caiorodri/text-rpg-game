@@ -1,7 +1,9 @@
+import sqlite3
 from time import sleep
 from typing import List
 from characters import Monster, MainCharacter
 from random import choice, randint
+from upgrades import update_blessings
 from utils import animated_text, clean, lose_floors, text_decorator, resource_screen
 
 
@@ -15,7 +17,13 @@ def fight_screen(player: MainCharacter, monsters: List[Monster], floor: str) -> 
 
     for index, monster in enumerate(monsters):
 
-        print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)')
+        if not monster.boss:
+
+            print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)')
+
+        else: 
+
+            print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m \033[1;31mBOSS\033[m - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)')
 
 def damage_screen(player: MainCharacter, monsters: List[Monster], player_target: int, floor: str):
 
@@ -24,6 +32,14 @@ def damage_screen(player: MainCharacter, monsters: List[Monster], player_target:
     monsters_damage = 0
 
     print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK) (\033[1;33m{player.shield}\033[m DEF)')
+
+    number = randint(1, 100)
+
+    critical_damage = 0
+
+    if number <= player.critical_chance:
+
+        critical_damage = int(round(player.damage * player.critical_damage))
 
     print()
 
@@ -35,27 +51,39 @@ def damage_screen(player: MainCharacter, monsters: List[Monster], player_target:
 
                 # ATAQUE DO USUÁRIO
 
-                print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)', end=' ')
+                if not monster.boss:
 
-                if player.damage - monster.shield <= 0:                 
-                    
-                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m0\033[m ->', 0.035)
-                    
-                else:
-
-                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m{player.damage - monster.shield}\033[m ->', 0.035)
-
-                if (monster.life - (player.damage - monster.shield)) <= 0:
-
-                    animated_text(' \033[1;31m0\033[m HP] ( \033[1;31mDIED\033[m )\n', 0.035)
+                    print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m lvl {monster.level} - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)', end=' ')
 
                 else:
 
-                    animated_text(f' \033[1;31m{monster.life - (player.damage - monster.shield)}\033[m HP]\n', 0.035)
+                    print(f'[{index+1}] \033[1;31m{monster.name.capitalize()}\033[m \033[1;31mBOSS\033[m - (\033[1;31m{monster.life}\033[m HP) (\033[1;31m{monster.damage}\033[m ATK) (\033[1;33m{monster.shield}\033[m DEF)', end='')
 
-                if (player.damage - monster.shield) > 0:
+                if player.damage + critical_damage - monster.shield <= 0:                 
+                    
+                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m0\033[m ->', 0.015)
+                    
+                else:
+
+                    animated_text(f'[\033[1;31m{monster.life}\033[m HP - \033[1;36m{player.damage + critical_damage - monster.shield}\033[m ->', 0.015)
+
+                if (monster.life - (player.damage + critical_damage - monster.shield)) <= 0:
+
+                    animated_text(' \033[1;31m0\033[m HP] ( \033[1;31mDIED\033[m )', 0.015)
+
+                else:
+
+                    animated_text(f' \033[1;31m{monster.life - (player.damage + critical_damage - monster.shield)}\033[m HP] ', 0.015)
+
+                if critical_damage > 0:
+
+                    print('\033[1;31mCRITICO\033[m')
+                
+                else: print()
+
+                if (player.damage + critical_damage - monster.shield) > 0:
     
-                    monster.life -= (player.damage - monster.shield)
+                    monster.life -= (player.damage + critical_damage - monster.shield)
                 
             else:
 
@@ -71,23 +99,33 @@ def damage_screen(player: MainCharacter, monsters: List[Monster], player_target:
 
     # ATAQUE DOS MONSTROS
 
-    print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK) (\033[1;33m{player.shield}\033[m DEF)', end=' ')
+    number = randint(1, 100)
 
-    if monsters_damage - player.shield <= 0:
-            
-        animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m0\033[m -> \033[1;32m{player.life}\033[m HP]')
+    if number <= player.dodge:
+
+        print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK) (\033[1;33m{player.shield}\033[m DEF)', end=' ')
+
+        animated_text('\033[1;33mESQUIVOU\033[m')
 
     else:
+    
+        print(f'\033[1;36m{player.name}\033[m {player.user_class.capitalize()} lvl {player.level} - (\033[1;32m{player.life}\033[m HP) (\033[1;36m{player.damage}\033[m ATK) (\033[1;33m{player.shield}\033[m DEF)', end=' ')
 
-        if player.life - (monsters_damage - player.shield) <= 0:
-
-            animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage - player.shield}\033[m -> \033[1;32m0\033[m HP]')
+        if monsters_damage - player.shield <= 0:
+                
+            animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m0\033[m -> \033[1;32m{player.life}\033[m HP]', 0.015)
 
         else:
-            
-            animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage - player.shield}\033[m -> \033[1;32m{player.life - (monsters_damage - player.shield)}\033[m HP]')
 
-        player.life -= (monsters_damage - player.shield)
+            if player.life - (monsters_damage - player.shield) <= 0:
+
+                animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage - player.shield}\033[m -> \033[1;32m0\033[m HP]', 0.015)
+
+            else:
+                
+                animated_text(f'[\033[1;32m{player.life}\033[m HP - \033[1;31m{monsters_damage - player.shield}\033[m -> \033[1;32m{player.life - (monsters_damage - player.shield)}\033[m HP]', 0.015)
+
+            player.life -= (monsters_damage - player.shield)
 
     print()
 
@@ -97,6 +135,23 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
 
     player.check_level()
     player.check_stats()
+
+    connection = sqlite3.connect('user.db')
+    cursor = connection.cursor()
+
+    cursor.execute(f"SELECT secoundchance_blessing FROM users WHERE username = '{player.name}'")
+
+    result = cursor.fetchall()
+
+    secound_chance = False
+
+    if result[0][0] > 0:
+
+        secound_chance = True
+
+    cursor.execute(f"SELECT goddesslife_blessing, godwar_blessing, ironheart_blessing, greed_blessing, wisdom_blessing, dodge_blessing, criticalchance_blessing, criticaldamage_blessing, secoundchance_blessing FROM users WHERE username = '{player.name}'")
+
+    query = cursor.fetchall()
 
     battle_result = 'Andamento'
 
@@ -138,8 +193,8 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
 
             if monster.life <= 0:
                     
-                player.xp += monster.xp
-                player.gold += monster.gold
+                player.xp += round(monster.xp + monster.xp * player.xp_increase)
+                player.gold += round(monster.gold + monster.gold * player.gold_increase)
 
                 monsters.pop(index)
 
@@ -149,16 +204,24 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
 
         if player.life <= 0:
 
-            battle_result = False
-            player.deaths += 1
+            if secound_chance:
 
-            player.update_deaths()
-
-            lose_floors(player.floor)
-
-            if player.floor <= 3: player.floor = 1
+                secound_chance = False
+                player.check_stats()
+                update_blessings(player, query[0], True)
             
-            else: player.floor -= 3
+            else:
+
+                battle_result = False
+                player.deaths += 1
+
+                player.update_deaths()
+
+                lose_floors(player.floor)
+
+                if player.floor <= 3: player.floor = 1
+                
+                else: player.floor -= 3
 
     return battle_result
 
@@ -190,7 +253,7 @@ def floor_decorator(floor):
 
     text_decorator(f'         {floor}         ', color='yellow')
 
-def floor1(player: MainCharacter, monster: List[str], level_min_monster: int = 1, level_max_monster: int = 3 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
+def floor1(player: MainCharacter, monster: List[str], level_min_monster: int = 1, level_max_monster: int = 2 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -298,7 +361,7 @@ def floor4(player: MainCharacter, monster: List[str], level_min_monster: int = 3
 
     return battle_result
 
-def floor5(player: MainCharacter, monster: List[str], level_min_monster: int = 4, level_max_monster: int = 6 , min_quantity_monsters: int = 3, max_quantity_monsters: int = 5) -> bool:
+def floor5(player: MainCharacter, monster: List[str], level_min_monster: int = 4, level_max_monster: int = 6 , min_quantity_monsters: int = 3, max_quantity_monsters: int = 4) -> bool:
 
     battle_result = True
 
