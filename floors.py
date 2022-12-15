@@ -1,4 +1,4 @@
-import sqlite3
+import mysql.connector
 from time import sleep
 from typing import List
 from characters import Monster, MainCharacter
@@ -136,7 +136,7 @@ def fight(player: MainCharacter, monsters: List[Monster], floor: str) -> bool:
     player.check_level()
     player.check_stats()
 
-    connection = sqlite3.connect('user.db')
+    connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
     cursor = connection.cursor()
 
     cursor.execute(f"SELECT secoundchance_blessing FROM users WHERE username = '{player.name}'")

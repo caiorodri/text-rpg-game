@@ -1,7 +1,8 @@
 from abc import ABC, ABCMeta, abstractmethod
 from typing import List
 from characters import MainCharacter
-import sqlite3
+import mysql.connector
+
 
 class Blessing(ABC):
 
@@ -29,7 +30,7 @@ class Blessing(ABC):
 
             self.effect(user)
 
-        connection = sqlite3.connect('user.db')
+        connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
         cursor = connection.cursor()
 
         cursor.execute(f"SELECT * FROM shop WHERE name = '{self.name}'")
@@ -44,7 +45,7 @@ class Blessing(ABC):
         
         else:
 
-            cursor.execute(f"INSERT INTO shop ('name', 'description', 'next_description', 'gold') VALUES ('{self.name}', '{self.description}', '{self.next_description}', '{self.gold}')")
+            cursor.execute(f"INSERT INTO shop (`name`, `description`, `next_description`, `gold`) VALUES ('{self.name}', '{self.description}', '{self.next_description}', '{self.gold}')")
         
         connection.commit()
         cursor.close()

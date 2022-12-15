@@ -5,8 +5,10 @@ from dungeons import dungeon1
 from utils import animated_text, main_decorator, text_decorator, write_monster_stats, write_stats
 import re
 from characters import MainCharacter
-import sqlite3
+import mysql.connector
+from mysql.connector.cursor_cext import CMySQLCursor
 import pwinput
+
 
 # OBTENDO DADOS DO USUÁRIO
 
@@ -202,7 +204,7 @@ def register() -> MainCharacter:
 
     valid = False
 
-    connection = sqlite3.connect('user.db')
+    connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
     cursor = connection.cursor()
 
     cursor.execute('SELECT * FROM users')
@@ -235,7 +237,7 @@ def register() -> MainCharacter:
 
     user = MainCharacter(username, user_class)
 
-    cursor.execute(f"INSERT INTO users ('name', 'email', 'password', 'username', 'user_class') VALUES ('{name}', '{email}', '{password}', '{username}','{user_class}')")
+    cursor.execute(f"INSERT INTO users (`name`,`email`,`password`,`username`,`user_class`) VALUES ('{name}','{email}','{password}','{username}','{user_class}')")
 
     connection.commit()
 
@@ -259,7 +261,7 @@ def login() -> MainCharacter:
         email = get_email()
         password = pwinput.pwinput(prompt='Digite sua Senha: ')
 
-        connection = sqlite3.connect('user.db')
+        connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
         cursor = connection.cursor()
 
         cursor.execute(f"SELECT * FROM users WHERE email = '{email}'")
@@ -301,7 +303,7 @@ def login() -> MainCharacter:
 
 # RANKINGS
 
-def level_ranking(cursor: sqlite3.Cursor, name: str) -> None:
+def level_ranking(cursor: CMySQLCursor, name: str) -> None:
 
     cursor.execute('SELECT username, user_class, user_level FROM users ORDER BY user_xp DESC')
     
@@ -339,7 +341,7 @@ def level_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
     animated_text(input('\033[1;33mPressione enter para voltar...\033[m'))
 
-def deaths_ranking(cursor: sqlite3.Cursor, name: str) -> None:
+def deaths_ranking(cursor: CMySQLCursor, name: str) -> None:
 
     cursor.execute('SELECT username, user_class, user_level, deaths FROM users ORDER BY deaths DESC, user_dungeon ASC, user_floor ASC')
     
@@ -376,7 +378,7 @@ def deaths_ranking(cursor: sqlite3.Cursor, name: str) -> None:
     
     animated_text(input('\033[1;33mPressione enter para voltar...\033[m'))
 
-def gold_ranking(cursor: sqlite3.Cursor, name: str) -> None:
+def gold_ranking(cursor: CMySQLCursor, name: str) -> None:
 
     cursor.execute('SELECT username, user_class, user_level, user_gold FROM users ORDER BY user_gold DESC, user_level ASC')
     
@@ -413,7 +415,7 @@ def gold_ranking(cursor: sqlite3.Cursor, name: str) -> None:
 
     animated_text(input('\033[1;33mPressione enter para voltar...\033[m'))
 
-def dungeon_ranking(cursor: sqlite3.Cursor, name: str) -> None:
+def dungeon_ranking(cursor: CMySQLCursor, name: str) -> None:
 
     cursor.execute('SELECT username, user_class, user_level, user_dungeon FROM users ORDER BY user_dungeon DESC, user_floor DESC, user_level ASC, user_xp ASC')
     
@@ -456,7 +458,7 @@ def ranking(player: MainCharacter) -> None:
 
     user_choice = ''
 
-    connection = sqlite3.connect('user.db')
+    connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
     cursor = connection.cursor()
 
     while user_choice != '0':
@@ -503,7 +505,7 @@ def ranking(player: MainCharacter) -> None:
 
 # LOJA
 
-def blessing_details(player: MainCharacter, blessing: list, cursor: sqlite3.Cursor) -> None:
+def blessing_details(player: MainCharacter, blessing: list, cursor: CMySQLCursor) -> None:
 
     while True:
 
@@ -573,7 +575,7 @@ def shop(player: MainCharacter) -> None:
 
     while True:
 
-        connection = sqlite3.connect('user.db')
+        connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
         cursor = connection.cursor()
         
         cursor.execute(f"SELECT goddesslife_blessing, godwar_blessing, ironheart_blessing, greed_blessing, wisdom_blessing, dodge_blessing, criticalchance_blessing, criticaldamage_blessing, secoundchance_blessing FROM users WHERE username = '{player.name}'")
