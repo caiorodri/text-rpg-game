@@ -96,9 +96,9 @@ def resource_screen(xp_before: int, xp_after: int, gold_before: int, gold_after:
 
     text_decorator(' Ganhos da Batalha ', 'cian')
 
-    animated_text(f'\033[1;36m{xp_before}\033[m XP + \033[1;36m{xp_after - xp_before}\033[m XP -> \033[1;36m{xp_after}\033[m XP\n')
+    animated_text(f'\033[1;36m{xp_before}\033[m XP + \033[1;36m{xp_after - xp_before}\033[m XP -> \033[1;36m{xp_after}\033[m XP\n', 0.015)
 
-    animated_text(f'\033[1;33m{gold_before}\033[m G + \033[1;33m{gold_after - gold_before}\033[m G -> \033[1;33m{gold_after}\033[m G')
+    animated_text(f'\033[1;33m{gold_before}\033[m G + \033[1;33m{gold_after - gold_before}\033[m G -> \033[1;33m{gold_after}\033[m G', 0.015)
 
     animated_text(input("\n\n\033[1;33mPressione enter para continuar...\033[m"))
 
@@ -121,9 +121,9 @@ floor 1
 
         animated_text(f'''floor {floor}
 
-| | | | |
-| | | | |
-| | | | |
+| | | | 
+| | | | 
+| | | | 
 
 floor {floor - 3}
 ''')         
@@ -134,7 +134,7 @@ floor {floor - 3}
 
 def write_stats():
 
-    dict_stats = {"leveis" : {}, "xp" : {}}
+    dict_stats = {"leveis" : {}, "xp" : {"level1" : 0,}}
 
     heroes_list = ["guerreiro", "mago", "arqueiro"]
 
@@ -178,7 +178,7 @@ def write_stats():
         archer_life += archer_life_increase
         archer_shield += archer_shield_increase
 
-    for indice in range(1, 51):
+    for indice in range(2, 51):
         
         dict_stats["xp"][f"level{indice}"] = xp
 
@@ -189,4 +189,85 @@ def write_stats():
             xp_increase += 150
     
     with open('stats.json', 'w') as file:
+        json.dump(dict_stats, file, indent=4)
+
+def write_monster_stats():
+
+    dict_stats = {"monstros" : {}}
+
+    monster_list = ["slime", "goblin", "esqueleto", "orc"]
+
+    slime_atk = 15
+    slime_atk_increase = 5
+    slime_life = 20
+    slime_life_increase = 9
+    slime_shield = 1
+    slime_shield_increase = 1
+    slime_xp = 10
+    slime_xp_increase = 5
+    slime_gold = 15
+    slime_gold_increase = 5
+
+    goblin_atk = 50
+    goblin_atk_increase = 7
+    goblin_life = 90
+    goblin_life_increase = 7
+    goblin_shield = 10
+    goblin_shield_increase = 1
+    goblin_xp = 50
+    goblin_xp_increase = 7
+    goblin_gold = 55
+    goblin_gold_increase = 10
+
+    esqueleto_atk = 100
+    esqueleto_atk_increase = 9
+    esqueleto_life = 140
+    esqueleto_life_increase = 4
+    esqueleto_shield = 20
+    esqueleto_shield_increase = 2
+    esqueleto_xp = 110
+    esqueleto_xp_increase = 8
+    esqueleto_gold = 110
+    esqueleto_gold_increase = 8
+
+    orc_atk = 180
+    orc_atk_increase = 5
+    orc_life = 200
+    orc_life_increase = 7
+    orc_shield = 40
+    orc_shield_increase = 3
+    orc_xp = 180
+    orc_xp_increase = 10
+    orc_gold = 200
+    orc_gold_increase = 15
+
+    for indice in range(1, 21):
+
+        dict_stats["monstros"][f"level{indice}"] = {f"{monster_list[0]}" : {"vida" : slime_life, "ataque" : slime_atk,"escudo" : slime_shield, "xp" : slime_xp, "gold" : slime_gold}, f"{monster_list[1]}" : {"vida" : goblin_life, "ataque" : goblin_atk, "escudo" : goblin_shield, "xp" : goblin_xp, "gold" : goblin_gold}, f"{monster_list[2]}" : {"vida" : esqueleto_life, "ataque" : esqueleto_atk, "escudo" : esqueleto_shield, "xp" : esqueleto_xp, "gold" : esqueleto_gold}, f"{monster_list[3]}" : {"vida" : orc_life, "ataque" : orc_atk, "escudo" : orc_shield, "xp" : orc_xp, "gold" : orc_gold}}
+
+        slime_atk += slime_atk_increase
+        slime_life += slime_life_increase
+        slime_shield += slime_shield_increase
+        slime_xp += slime_xp_increase
+        slime_gold += slime_gold_increase
+
+        goblin_atk += goblin_atk_increase
+        goblin_life += goblin_life_increase
+        goblin_shield += goblin_shield_increase
+        goblin_xp += goblin_xp_increase
+        goblin_gold += goblin_gold_increase
+
+        esqueleto_atk += esqueleto_atk_increase
+        esqueleto_life += esqueleto_life_increase
+        esqueleto_shield += esqueleto_shield_increase
+        esqueleto_xp += esqueleto_xp_increase
+        esqueleto_gold += esqueleto_gold_increase
+
+        orc_atk += orc_atk_increase
+        orc_life += orc_life_increase
+        orc_shield += orc_shield_increase
+        orc_xp += orc_xp_increase
+        orc_gold += orc_gold_increase
+
+    with open('monsters.json', 'w') as file:
         json.dump(dict_stats, file, indent=4)
