@@ -1,6 +1,10 @@
+from email.message import EmailMessage
 import json
 import os
+from random import randint
+import smtplib
 from time import sleep
+import mysql.connector
 
 def text_decorator(text: str, color: str = 'white', decorator: str = '=') -> None:
 
@@ -46,9 +50,9 @@ def text_decorator(text: str, color: str = 'white', decorator: str = '=') -> Non
 def main_decorator():
 
     clean()
-    print('=' * (len("My First Text RPG") + 2))
-    print(f" \033[1;36mMy First Text RPG\033[m")
-    print('=' * (len("My First Text RPG") + 2))
+    print('=' * (len("Dungeon of Adventure") + 2))
+    print(f" \033[1;Dungeon of Adventure\033[m")
+    print('=' * (len("Dungeon of Adventure") + 2))
     print()
 
 def clean():
@@ -271,3 +275,30 @@ def write_monster_stats():
 
     with open('monsters.json', 'w') as file:
         json.dump(dict_stats, file, indent=4)
+
+def check_email_valid(email: str) -> str:
+
+    connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
+    cursor = connection.cursor()
+
+    number = randint(100000, 999999)
+
+    cursor.execute('SELECT email, password FROM users WHERE id = 2')
+
+    result = cursor.fetchall()
+
+    email_from = result[0][0]
+    password = result[0][1]
+
+    message = EmailMessage()
+    message['subject'] = 'Verificação de Email'
+    message['From'] = email_from
+    message['To'] = email
+    message.set_content(f'Código: {number}')
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+
+        smtp.login(email_from, password)
+        smtp.send_message(message)
+
+    return str(number)
