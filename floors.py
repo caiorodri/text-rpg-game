@@ -253,7 +253,7 @@ def floor_decorator(floor):
 
     text_decorator(f'         {floor}         ', color='yellow')
 
-def floor1(player: MainCharacter, monster: List[str], level_min_monster: int = 1, level_max_monster: int = 2 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
+def floor1(player: MainCharacter, monster: List[str], level_min_monster: int = 1, level_max_monster: int = 1 , min_quantity_monsters: int = 1, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -307,7 +307,7 @@ def floor2(player: MainCharacter, monster: List[str], level_min_monster: int = 1
 
     return battle_result
 
-def floor3(player: MainCharacter, monster: List[str], level_min_monster: int = 2, level_max_monster: int = 4 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor3(player: MainCharacter, monster: List[str], level_min_monster: int = 2, level_max_monster: int = 3 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -334,7 +334,7 @@ def floor3(player: MainCharacter, monster: List[str], level_min_monster: int = 2
 
     return battle_result
 
-def floor4(player: MainCharacter, monster: List[str], level_min_monster: int = 3, level_max_monster: int = 5 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor4(player: MainCharacter, monster: List[str], level_min_monster: int = 3, level_max_monster: int = 4 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
@@ -442,7 +442,7 @@ def floor7(player: MainCharacter, monster: List[str], level_min_monster: int = 6
 
     return battle_result
 
-def floor8(player: MainCharacter, monster: List[str], level_min_monster: int = 7, level_max_monster: int = 9 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
+def floor8(player: MainCharacter, monster: List[str], level_min_monster: int = 8, level_max_monster: int = 9 , min_quantity_monsters: int = 2, max_quantity_monsters: int = 3) -> bool:
 
     battle_result = True
 
