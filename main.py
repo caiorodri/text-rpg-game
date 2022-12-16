@@ -140,7 +140,7 @@ def get_class() -> str:
 
     while not valid:
 
-        user_class = input('Escolha do Usuário: ').strip().lower()
+        user_class = input('\033[1;33mEscolha do Usuário:\033[m ').strip().lower()
 
         if user_class == 'guerreiro' or user_class == '1':
 
@@ -211,7 +211,7 @@ def check_email(name, query) -> str:
 
             text_decorator('Dungeon of Adventure', 'cian')
 
-            print(f'Código de 6 digitos enviado para {email}\n')
+            print(f'Código de 6 digitos enviado para "\033[1;34m{email}\033[m"\n')
             code = input('\033[1;33mDigite o código: \033[m')
 
             trys += 1
@@ -674,7 +674,7 @@ def menu(player: MainCharacter) -> bool:
 [1] - Ir para a Dungeon
 [2] - Ver o Ranking
 [3] - Ver Meu Status
-[4] - Mudar Classe do Personagem
+[4] - Mudar de Classe
 
 [5] - Loja
 
