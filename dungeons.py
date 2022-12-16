@@ -196,7 +196,7 @@ def dungeon1(player: MainCharacter) -> bool:
 
     # INTRODUÇÃO A DUNGEON
 
-    if player.floor < 2 and player.deaths <= 3:
+    if player.floor < 2 and player.deaths <= 2:
 
         dungeon_decorator('Dungeon 1')
 
