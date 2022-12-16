@@ -51,7 +51,7 @@ def main_decorator():
 
     clean()
     print('=' * (len("Dungeon of Adventure") + 2))
-    print(f" \033[1;Dungeon of Adventure\033[m")
+    print(f" \033[1;36mDungeon of Adventure\033[m")
     print('=' * (len("Dungeon of Adventure") + 2))
     print()
 
