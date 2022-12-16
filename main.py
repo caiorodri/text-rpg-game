@@ -2,7 +2,7 @@ from time import sleep
 from typing import List
 from upgrades import update_blessings
 from dungeons import dungeon1
-from utils import animated_text, main_decorator, text_decorator, write_monster_stats, write_stats
+from utils import animated_text, check_email_valid, main_decorator, text_decorator, write_monster_stats, write_stats
 import re
 from characters import MainCharacter
 import mysql.connector
@@ -198,6 +198,30 @@ def check_email(name, query) -> str:
 
             pass
 
+        number_validation = check_email_valid(email)
+        code = 0
+        trys = 0
+
+        while code != number_validation:
+
+            if trys > 0:
+
+                print('\nCódigo errado')
+                sleep(2)
+
+            text_decorator('Dungeon of Adventure', 'cian')
+
+            print(f'Código de 6 digitos enviado para {email}\n')
+            code = input('\033[1;33mDigite o código: \033[m')
+
+            trys += 1
+
+            if trys >= 3:
+
+                animated_text('\nMuitas tentativas falhas... Encerrando\n')
+
+                return ''
+
     return email
 
 def register() -> MainCharacter:
@@ -222,7 +246,8 @@ def register() -> MainCharacter:
         valid = True
 
         name = get_name()
-        email = check_email(name, query)        
+        email = check_email(name, query)
+        if email == '': return MainCharacter('', '')
         password = get_password()
 
         if len(password) < 8:
@@ -736,7 +761,7 @@ def init():
 
         valid = True
 
-        text_decorator('My Little Game', 'cian')
+        text_decorator('Dungeon of Adventure', 'cian')
 
         animated_text('''Escolha uma opção
 
@@ -763,7 +788,9 @@ def init():
             sleep(2)
             continue
     
-    if user_choice != '0':
+    if player.name == '': pass
+
+    elif user_choice != '0':
         
         write_stats()
         write_monster_stats()
@@ -779,7 +806,5 @@ def init():
     player.update_stats()
 
     animated_text('\n\033[1;32mObrigado por jogar meu jogo! Volte sempre\033[m\n')
-
-    sleep(2)
 
 init()
