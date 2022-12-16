@@ -28,7 +28,7 @@ class Character(ABC):
 
 class MainCharacter(Character):
 
-    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 1, xp: int = 0, gold: int = 0, dungeon: int = 1, floor: int = 1, deaths: int = 0, life_increase: float = 0, damage_increase: float = 0, shield_increase: float = 0, gold_increase: float = 0, xp_increase: float = 0, dodge: float = 0, critical_chance: float = False, critical_damage: float = False) -> None:
+    def __init__(self, name: str, user_class: str, life: int = 0, damage: int = 0, shield: int = 0, level: int = 1, xp: int = 0, gold: int = 0, dungeon: int = 1, floor: int = 1, deaths: int = 0, life_increase: float = 0, damage_increase: float = 0, shield_increase: float = 0, gold_increase: float = 0, xp_increase: float = 0, dodge: float = 0, critical_chance: float = 0, critical_damage: float = 0) -> None:
         
         super().__init__(name, life, damage, shield, level, xp, gold)
         self.user_class = user_class
@@ -230,8 +230,26 @@ class MainCharacter(Character):
                 self.user_class = user_class
                 self.gold = 0
                 self.xp = 0
-                self.dungeon = 0
-                self.floor = 0
+                self.dungeon = 1
+                self.floor = 1
+                self.deaths = 0
+                self.life_increase
+                self.damage_increase
+                self.shield_increase
+                self.gold_increase
+                self.xp_increase
+                self.dodge
+                self.critical_chance
+                self.critical_damage
+
+                connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
+                cursor = connection.cursor()
+
+                cursor.execute(f"UPDATE users SET goddesslife_blessing = 0, godwar_blessing = 0, ironheart_blessing = 0, greed_blessing = 0, wisdom_blessing = 0, dodge_blessing = 0, criticalchance_blessing = 0, criticaldamage_blessing = 0, secoundchance_blessing = 0 WHERE username = '{self.name}'")
+
+                connection.commit()
+                cursor.close()
+                connection.close()                
 
                 self.update_stats()
                 return
