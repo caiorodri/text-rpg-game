@@ -8,7 +8,7 @@ def dungeon_decorator(dungeon):
 
     clean()
 
-    text_decorator(f'         {dungeon}         ', color='cian')
+    text_decorator(f'         {dungeon}         ', color='cyan')
 
 def win_message(dungeon, floor) -> bool:
 
@@ -170,7 +170,10 @@ def dungeon(dungeon: str, player: MainCharacter, monster: List[str]) -> bool:
 
                 back = win_message(dungeon, '9')
 
-                if back: break
+                if back:
+                    
+                    return True
+                    
 
         if player.floor == 10:
 
