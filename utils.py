@@ -40,9 +40,9 @@ def text_decorator(text: str, color: str = 'white', decorator: str = '=') -> Non
         print('', coloring_text(text, 'pink'))
         print(decorator * (len(text) + 2))
 
-    elif color == 'cian':
+    elif color == 'cyan':
         print(decorator * (len(text) + 2))
-        print('', coloring_text(text, 'cian'))
+        print('', coloring_text(text, 'cyan'))
         print(decorator * (len(text) + 2))
     
     print()
@@ -81,7 +81,7 @@ def coloring_text(text: str, color: str) -> str:
 
         return(f'\033[1;35m{text}\033[m')
 
-    if color == 'cian':
+    if color == 'cyan':
 
         return(f'\033[1;36m{text}\033[m')
 
@@ -96,13 +96,21 @@ def animated_text(text: str, time: float = 0.05):
         print(letter, end='')
         sleep(time)
 
-def resource_screen(xp_before: int, xp_after: int, gold_before: int, gold_after: int) -> None:
+def resource_screen(user, xp_before: int, xp_after: int, gold_before: int, gold_after: int) -> None:
 
-    text_decorator(' Ganhos da Batalha ', 'cian')
+    text_decorator(' Ganhos da Batalha ', 'cyan')
 
     animated_text(f'\033[1;36m{xp_before}\033[m XP + \033[1;36m{xp_after - xp_before}\033[m XP -> \033[1;36m{xp_after}\033[m XP\n', 0.015)
 
     animated_text(f'\033[1;33m{gold_before}\033[m G + \033[1;33m{gold_after - gold_before}\033[m G -> \033[1;33m{gold_after}\033[m G', 0.015)
+
+    with open('stats.json', 'r') as file:
+
+            stats = json.load(file)
+
+            next_level = stats["xp"][f"level{user.level+1}"]
+
+            animated_text(f"\n\nProximo Nivel: \033[1;36m{next_level}\033[m XP", 0.015)
 
     animated_text(input("\n\n\033[1;33mPressione enter para continuar...\033[m"))
 
