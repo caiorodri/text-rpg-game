@@ -1,11 +1,11 @@
-from mysql.connector.connection import Connector
 import mysql.connector
+from mysql.connector.connection_cext import CMySQLConnection
 
 class ConnectionDB:
 
     def __init__(self) -> None:
 
-        self.connection_current: Connector
+        self.connection_current: CMySQLConnection
     
     def open_connect(self) -> None:
 
@@ -100,3 +100,7 @@ class ConnectionDB:
         finally:
 
             self.close_connect()
+
+connection_current = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
+
+print(type(connection_current))
