@@ -4,7 +4,9 @@ import os
 from random import randint
 import smtplib
 from time import sleep
-import mysql.connector
+
+from connection_db import ConnectionDB
+
 
 def text_decorator(text: str, color: str = 'white', decorator: str = '=') -> None:
 
@@ -286,14 +288,11 @@ def write_monster_stats():
 
 def check_email_valid(email: str) -> str:
 
-    connection = mysql.connector.connect(host='localhost', database='dbtextrpg', user='root', password='')
-    cursor = connection.cursor()
+    connection = ConnectionDB()
 
     number = randint(100000, 999999)
 
-    cursor.execute('SELECT email, password FROM users WHERE id = 2')
-
-    result = cursor.fetchall()
+    result = connection.select('SELECT email, password FROM users WHERE id = 2')
 
     email_from = result[0][0]
     password = result[0][1]
